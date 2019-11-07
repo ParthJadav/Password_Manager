@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:weightSum="2"
+    tools:context=".ui.activity.RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnRegisterBack"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:src="@drawable/ic_back_arrow" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/btnRegisterBack"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.an.customfontview.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_there"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_26ssp"
+                app:textFontPath="fonts/SF-Pro-Display-Bold.ttf" />
+
+            <com.an.customfontview.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_account"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                android:layout_marginTop="@dimen/_minus5sdp"
+                app:textFontPath="fonts/SF-Pro-Display-Medium.ttf" />
+
+            <com.an.customfontview.CustomEditText
+                android:id="@+id/edtFirstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/bg_edittext"
+                android:hint="@string/firstname"
+                android:imeOptions="actionNext"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/grey_60"
+                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+
+            <com.an.customfontview.CustomEditText
+                android:id="@+id/edtLastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_edittext"
+                android:hint="@string/lastname"
+                android:imeOptions="actionNext"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/grey_60"
+                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+
+            <com.an.customfontview.CustomEditText
+                android:id="@+id/edtUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_edittext"
+                android:hint="@string/username"
+                android:imeOptions="actionNext"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/grey_60"
+                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+
+            <com.an.customfontview.CustomEditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_edittext"
+                android:hint="@string/dots"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
+                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+
+            <ProgressBar
+                android:id="@+id/loginProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:indeterminateTint="@color/colorPrimary"
+                android:visibility="gone" />
+
+
+            <com.an.customfontview.CustomButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/bg_login_btn"
+                android:text="@string/register"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_16ssp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
+
+        <com.an.customfontview.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/already_a_member"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_12ssp"
+            app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/btnRegisterLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/login"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12ssp"
+            app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+    </LinearLayout>
+</LinearLayout>

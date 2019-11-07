@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:weightSum="2"
+    tools:context=".ui.activity.WelcomeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/_minus5sdp"
+            android:layout_marginBottom="@dimen/_77sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/gray_bg_welcome_screen" />
+
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/welcome"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_32ssp"
+            app:textFontPath="fonts/SF-Pro-Display-Bold.ttf" />
+
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/tvNice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvWelcome"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_minus9sdp"
+            android:text="@string/nice_to_see_you_again"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_14ssp"
+            app:textFontPath="fonts/SF-Pro-Display-Thin.ttf" />
+
+        <com.an.customfontview.CustomButton
+            android:id="@+id/btnWelcomeLogin"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_below="@id/tvNice"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_16ssp"
+            android:background="@drawable/bg_login_btn"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_180sdp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/shape1_welcome_screen" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_180sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/_54sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/shape2_welcome_screen" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_180sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/_85sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/shape3_welcome_screen" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
+
+        <com.an.customfontview.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/you_are_not_a_member"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/_12ssp"
+            app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/btnWelcomeRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/register"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12ssp"
+            app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+    </LinearLayout>
+</LinearLayout>

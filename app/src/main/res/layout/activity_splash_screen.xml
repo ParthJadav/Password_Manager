@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:padding="@dimen/_15sdp"
+    tools:context=".ui.activity.SplashScreenActivity"
+    tools:ignore="RtlSymmetry">
+
+    <com.an.customfontview.CustomTextView
+        android:id="@+id/tvPasswordManager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_60sdp"
+        app:textFontPath="fonts/SF-Pro-Display-Bold.ttf"
+        android:text="@string/password_manager"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_22ssp"/>
+
+    <com.an.customfontview.CustomTextView
+        android:id="@+id/tvWelcomePasswordManager"
+        android:layout_below="@id/tvPasswordManager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:textFontPath="fonts/SF-Pro-Display-Regular.ttf"
+        android:text="@string/welcome_to_password_manager"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/_10ssp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_marginTop="@dimen/_200sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_50ssp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/logo"
+        tools:ignore="MissingConstraints" />
+
+</RelativeLayout>

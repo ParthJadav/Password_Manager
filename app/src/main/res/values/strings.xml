@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Password Manager</string>
+    <string name="welcome_to_password_manager">Welcome to password manager</string>
+    <string name="password_manager">Password Manager</string>
+    <string name="login">Login</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="hello_there">Hello There!</string>
+    <string name="dots">•••••••</string>
+    <string name="register">Register</string>
+    <string name="need_help">Need Help?</string>
+    <string name="welcome">Welcome!</string>
+    <string name="nice_to_see_you_again">Nice to see you again!</string>
+    <string name="you_are_not_a_member">You are not a member?</string>
+    <string name="send">Send</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="otp_message">Please enter your email id, You will receive an One Time Password (OTP) to create a new</string>
+    <string name="already_a_member">Already a member?</string>
+    <string name="username">username</string>
+    <string name="firstname">Firstname</string>
+    <string name="lastname">Lastname</string>
+    <string name="create_account">Create Account</string>
+</resources>
