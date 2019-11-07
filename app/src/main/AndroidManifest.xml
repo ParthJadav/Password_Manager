@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.activity.AddPasswordActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar.StatusBar"/>
         <activity android:name=".ui.activity.SettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
