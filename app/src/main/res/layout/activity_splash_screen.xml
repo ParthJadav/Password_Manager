@@ -17,7 +17,7 @@
         app:textFontPath="fonts/SF-Pro-Display-Bold.ttf"
         android:text="@string/password_manager"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/_22ssp"/>
+        android:textSize="@dimen/_26ssp"/>
 
     <com.an.customfontview.CustomTextView
         android:id="@+id/tvWelcomePasswordManager"
@@ -27,7 +27,7 @@
         app:textFontPath="fonts/SF-Pro-Display-Regular.ttf"
         android:text="@string/welcome_to_password_manager"
         android:textColor="@color/colorAccent"
-        android:textSize="@dimen/_10ssp" />
+        android:textSize="@dimen/_12ssp" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/appCompatImageView"

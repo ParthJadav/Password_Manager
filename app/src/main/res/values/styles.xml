@@ -15,4 +15,45 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.NoActionBar.StatusBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <style name="BottomDialogTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <style name="Divider">
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="Divider.Horizontal" parent="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
+    <style name="Plain" parent="BottomDialogTheme">
+        <item name="bottom_sheet_extra_padding">0dp</item>
+        <item name="should_draw_under_status_bar">false</item>
+    </style>
+
+    <style name="Pull" parent="BottomDialogTheme">
+        <item name="bottom_sheet_extra_padding">0dp</item>
+        <item name="bottom_sheet_corner_radius">26dp</item>
+        <item name="should_draw_content_under_handle_view">true</item>
+    </style>
+
+    <style name="Rotate" parent="BottomDialogTheme">
+        <item name="bottom_sheet_extra_padding">0dp</item>
+        <item name="bottom_sheet_corner_radius">26dp</item>
+        <item name="should_draw_content_under_handle_view">true</item>
+    </style>
+
 </resources>

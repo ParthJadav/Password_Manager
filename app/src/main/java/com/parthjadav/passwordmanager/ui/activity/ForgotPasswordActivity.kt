@@ -1,5 +1,6 @@
 package com.parthjadav.passwordmanager.ui.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
     val handler = Handler()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
@@ -82,7 +84,6 @@ class ForgotPasswordActivity : AppCompatActivity() {
                     if (number.length < 1) {
                         edtMobileNumber.text = ""
                     }
-                    //Do something after 20 seconds
                 }
             }, 100)
             return@setOnLongClickListener true

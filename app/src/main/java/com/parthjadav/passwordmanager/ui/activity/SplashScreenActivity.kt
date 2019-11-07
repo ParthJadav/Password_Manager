@@ -1,10 +1,13 @@
 package com.parthjadav.passwordmanager.ui.activity
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.parthjadav.passwordmanager.R
 import android.os.Handler
+import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import com.parthjadav.passwordmanager.utils.AppUtils
 
 class SplashScreenActivity : AppCompatActivity() {
