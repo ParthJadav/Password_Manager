@@ -38,7 +38,7 @@
                 android:text="@string/hello_there"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_26ssp"
-                app:textFontPath="fonts/SF-Pro-Display-Bold.ttf" />
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
 
             <com.an.customfontview.CustomTextView
                 android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_20ssp"
                 android:layout_marginTop="@dimen/_minus5sdp"
-                app:textFontPath="fonts/SF-Pro-Display-Medium.ttf" />
+                app:textFontPath="fonts/Montserrat-Medium.ttf" />
 
             <com.an.customfontview.CustomEditText
                 android:id="@+id/edtFirstname"
@@ -63,7 +63,7 @@
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grey_60"
-                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+                app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
             <com.an.customfontview.CustomEditText
                 android:id="@+id/edtLastname"
@@ -79,7 +79,7 @@
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grey_60"
-                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+                app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
             <com.an.customfontview.CustomEditText
                 android:id="@+id/edtUsername"
@@ -95,7 +95,7 @@
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grey_60"
-                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+                app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
             <com.an.customfontview.CustomEditText
                 android:id="@+id/edtMobile"
@@ -111,7 +111,7 @@
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grey_60"
-                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+                app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
             <com.an.customfontview.CustomEditText
                 android:id="@+id/edtPassword"
@@ -128,7 +128,7 @@
                 android:drawableTint="@color/grey_60"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grey_60"
-                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+                app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
             <ProgressBar
                 android:id="@+id/loginProgressBar"
@@ -146,6 +146,7 @@
                 android:background="@drawable/bg_login_btn"
                 android:text="@string/register"
                 android:textAllCaps="false"
+                app:btnFontPath="fonts/Montserrat-Regular.ttf"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_16ssp" />
 
@@ -167,7 +168,7 @@
             android:text="@string/already_a_member"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/_12ssp"
-            app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+            app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
         <com.an.customfontview.CustomTextView
             android:id="@+id/btnRegisterLogin"
@@ -178,6 +179,6 @@
             android:text="@string/login"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_12ssp"
-            app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+            app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
     </LinearLayout>
 </LinearLayout>

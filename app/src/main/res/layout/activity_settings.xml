@@ -40,7 +40,7 @@
                 android:text="Settings"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_26ssp"
-                app:textFontPath="fonts/SF-Pro-Display-Bold.ttf" />
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
         </LinearLayout>
 
 
@@ -68,7 +68,7 @@
                 android:text="Enable Pin Lock"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_14ssp"
-                app:textFontPath="fonts/SF-Pro-Display-Semibold.ttf" />
+                app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switchPassCode"
@@ -101,7 +101,7 @@
                 android:text="@string/change_password"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_14ssp"
-                app:textFontPath="fonts/SF-Pro-Display-Semibold.ttf" />
+                app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -127,7 +127,7 @@
                 android:text="@string/logout"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_14ssp"
-                app:textFontPath="fonts/SF-Pro-Display-Semibold.ttf" />
+                app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -141,6 +141,6 @@
         android:text="App version 1.0.0"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/_14ssp"
-        app:textFontPath="fonts/SF-Pro-Display-Semibold.ttf" />
+        app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
 
 </RelativeLayout>

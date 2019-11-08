@@ -15,7 +15,7 @@
     <string name="forgot_password">Forgot password</string>
     <string name="otp_message">Please enter your email id, You will receive an One Time Password (OTP) to create a new</string>
     <string name="already_a_member">Already a member?</string>
-    <string name="username">username</string>
+    <string name="username">Username</string>
     <string name="firstname">Firstname</string>
     <string name="lastname">Lastname</string>
     <string name="create_account">Create Account</string>

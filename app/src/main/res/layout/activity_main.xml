@@ -23,7 +23,7 @@
             android:text="@string/vault"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/_26ssp"
-            app:textFontPath="fonts/SF-Pro-Display-Semibold.ttf"
+            app:textFontPath="fonts/Montserrat-SemiBold.ttf"
             tools:ignore="RelativeOverlap" />
 
         <androidx.appcompat.widget.AppCompatImageView

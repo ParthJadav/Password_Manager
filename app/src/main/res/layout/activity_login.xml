@@ -39,7 +39,7 @@
                 android:text="@string/hello_there"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_26ssp"
-                app:textFontPath="fonts/SF-Pro-Display-Bold.ttf" />
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
 
             <com.an.customfontview.CustomEditText
                 android:id="@+id/edtUsername"
@@ -54,7 +54,7 @@
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/colorPrimary"
-                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+                app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
             <com.an.customfontview.CustomEditText
                 android:id="@+id/edtPassword"
@@ -70,7 +70,7 @@
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/colorAccent"
                 android:textColorHint="@color/colorAccent"
-                app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+                app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
             <ProgressBar
                 android:id="@+id/loginProgressBar"
@@ -108,7 +108,7 @@
                     android:text="@string/need_help"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_14ssp"
-                    app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+                    app:textFontPath="fonts/Montserrat-Regular.ttf" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -128,7 +128,7 @@
             android:text="@string/you_are_not_a_member"
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/_12ssp"
-            app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+            app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
         <com.an.customfontview.CustomTextView
             android:id="@+id/btnRegister"
@@ -139,6 +139,6 @@
             android:text="@string/register"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_12ssp"
-            app:textFontPath="fonts/SF-Pro-Display-Regular.ttf" />
+            app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
     </LinearLayout>
 </LinearLayout>

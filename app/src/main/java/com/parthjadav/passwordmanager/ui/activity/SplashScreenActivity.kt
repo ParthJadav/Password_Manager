@@ -20,7 +20,6 @@ class SplashScreenActivity : AppCompatActivity() {
             /* Create an Intent that will start the Menu-Activity. */
             val mainIntent = Intent(this, WelcomeActivity::class.java)
             startActivity(mainIntent)
-            finish()
         }, 3000)
     }
 }
