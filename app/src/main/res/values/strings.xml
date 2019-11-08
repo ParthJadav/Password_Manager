@@ -37,4 +37,7 @@
     <string name="mobile_number">Mobile number</string>
     <string name="logout">Logout</string>
     <string name="change_password">Change Password</string>
+    <string name="enter_your_pin">Enter your pin</string>
+    <string name="set_pin">Set Pin</string>
+    <string name="enable_pin_lock">Enable Pin Lock</string>
 </resources>

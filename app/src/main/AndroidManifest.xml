@@ -15,10 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ui.activity.AddPasswordActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".ui.activity.SettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.activity.SetPinActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.AddPasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -59,13 +59,12 @@
                 android:src="@drawable/splash_two" />
 
             <com.an.customfontview.CustomTextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_20sdp"
-                android:layout_toLeftOf="@id/switchPassCode"
-                android:layout_toRightOf="@id/imgPassCode"
-                android:text="Enable Pin Lock"
+                android:layout_toEndOf="@id/imgPassCode"
+                android:text="@string/enable_pin_lock"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_14ssp"
                 app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
@@ -74,7 +73,7 @@
                 android:id="@+id/switchPassCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true" />
         </RelativeLayout>
 

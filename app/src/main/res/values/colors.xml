@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#D81B60</color>
-    <color name="colorPrimaryDark">#D81B60</color>
+    <color name="colorPrimaryDark">#FF3781</color>
     <color name="colorAccent">#455A64</color>
 
     <color name="colorWhite">#ffffff</color>
@@ -10,6 +10,10 @@
     <color name="bottom_drawer_outside_background">#80000000</color>
     <color name="bottom_drawer_background">#FFFFFF</color>
     <color name="bottom_drawer_handle_view_color">#E0E0E0</color>
+
+    <color name="pinFieldLibraryAccent">#FF4081</color>
+    <color name="inactivePinFieldColor">#808080</color>
+    <color name="pinFieldLibraryTransparent">#00000000</color>
 
     <array name="material_colors">
         <item>#F44336</item>

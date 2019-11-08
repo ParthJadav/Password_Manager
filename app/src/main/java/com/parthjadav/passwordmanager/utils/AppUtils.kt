@@ -21,9 +21,14 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
 import java.util.Date
+import android.content.res.Resources
+
 
 public class AppUtils {
 
+    fun dpToPx(dp: Float): Float {
+        return dp * Resources.getSystem().getDisplayMetrics().density
+    }
 
     val currentDateTime: Date
         get() = Calendar.getInstance().time

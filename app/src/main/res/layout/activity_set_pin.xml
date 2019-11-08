@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    tools:context=".ui.activity.SetPinActivity">
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnSetPinBack"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/ic_back_arrow"
+            android:tint="@color/colorAccent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvTitleMessage"
+            android:layout_below="@id/btnSetPinBack"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/splash_two" />
+
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/tvTitleMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/circleField"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="Create a 4-digit Pincode"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_18ssp"
+            app:textFontPath="fonts/Montserrat-Bold.ttf" />
+
+        <com.parthjadav.passwordmanager.utils.CirclePinField
+            android:id="@+id/circleField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:clickable="false"
+            android:inputType="text"
+            android:textSelectHandle="@drawable/text_handle"
+            android:textSize="@dimen/_16ssp"
+            app:circleRadius="@dimen/_13sdp"
+            app:fieldBgColor="#fff"
+            app:fillerColor="@color/colorPrimary"
+            app:fillerRadius="@dimen/_10sdp"
+            app:noOfFields="4" />
+
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/tvErrorMessage"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/circleField"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:text="The Pincode don't match"
+            android:textColor="@color/red_600"
+            android:textSize="@dimen/_12ssp"
+            app:textFontPath="fonts/Montserrat-Bold.ttf" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:background="@drawable/bg_add_password"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv1"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv2"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv3"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv4"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="4"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv5"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="5"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv6"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv7"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv8"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="8"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv9"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="9"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnSavePin"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:tint="@color/colorWhite"
+                android:src="@drawable/ic_check_black_24dp"/>
+
+
+            <com.an.customfontview.CustomTextView
+                android:id="@+id/tv0"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_20ssp"
+                app:textFontPath="fonts/Montserrat-Bold.ttf" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnNumberBack"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:padding="@dimen/_12sdp"
+                android:src="@drawable/ic_backspace"
+                android:tint="@color/colorWhite" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
