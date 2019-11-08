@@ -14,30 +14,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_60sdp"
-        app:textFontPath="fonts/SF-Pro-Display-Bold.ttf"
+        app:textFontPath="fonts/Montserrat-SemiBold.ttf"
         android:text="@string/password_manager"
         android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/_26ssp"/>
+        android:textSize="@dimen/_24ssp"/>
 
     <com.an.customfontview.CustomTextView
         android:id="@+id/tvWelcomePasswordManager"
         android:layout_below="@id/tvPasswordManager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:textFontPath="fonts/SF-Pro-Display-Regular.ttf"
+        app:textFontPath="fonts/Montserrat-Regular.ttf"
         android:text="@string/welcome_to_password_manager"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/_12ssp" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/appCompatImageView"
-        android:layout_width="@dimen/_180sdp"
-        android:layout_height="@dimen/_180sdp"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
         android:layout_marginTop="@dimen/_200sdp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/_50ssp"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/logo"
+        android:src="@drawable/ic_splash_bg_1"
         tools:ignore="MissingConstraints" />
 
 </RelativeLayout>

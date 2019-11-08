@@ -14,9 +14,9 @@
         android:roundIcon="@drawable/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".ui.activity.AddPasswordActivity"
-            android:theme="@style/AppTheme.NoActionBar.StatusBar"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.activity.SettingsActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
@@ -32,6 +32,9 @@
             android:name=".ui.activity.WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar.StatusBar" />
         <activity
+            android:name=".ui.activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.activity.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -40,9 +43,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

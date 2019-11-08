@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         imgBtnSettings.setOnClickListener {
-            /*supportFragmentManager?.beginTransaction()?.add(SettingsFragment(), "test")
-                ?.commit()*/
+            val mainIntent = Intent(this, SettingsActivity::class.java)
+            startActivity(mainIntent)
         }
 
         btnAddPassword.setOnClickListener {
