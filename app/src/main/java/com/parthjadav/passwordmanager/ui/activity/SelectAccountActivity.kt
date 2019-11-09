@@ -17,6 +17,10 @@ class SelectAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_account)
 
+        btnAccountBack.setOnClickListener {
+            finish()
+        }
+
         recyclerViewAccounts.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
 
         val accounts = ArrayList<Account>()

@@ -1,11 +1,12 @@
 package com.parthjadav.passwordmanager.model
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-
-class User : Serializable {
+@Entity(tableName = "user")
+class User {
     @PrimaryKey(autoGenerate = true)
     private var id: Int = 0
 
