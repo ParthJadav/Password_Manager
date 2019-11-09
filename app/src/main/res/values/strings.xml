@@ -36,8 +36,15 @@
     <string name="add_password">Add Password</string>
     <string name="mobile_number">Mobile number</string>
     <string name="logout">Logout</string>
-    <string name="change_password">Change Password</string>
     <string name="enter_your_pin">Enter your pin</string>
     <string name="set_pin">Set Pin</string>
     <string name="enable_pin_lock">Enable Pin Lock</string>
+    <string name="enter_your_4_digit_pincode">Enter your 4-digit Pincode</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="new_password">New Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="change">Change</string>
+    <string name="change_password">Change Password</string>
+    <string name="select_account">Select Account</string>
+    <string name="account_name">Account Name</string>
 </resources>

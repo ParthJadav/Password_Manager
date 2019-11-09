@@ -1,14 +1,11 @@
 package com.parthjadav.passwordmanager.ui.activity
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.parthjadav.passwordmanager.R
 import android.os.Handler
-import android.view.WindowManager
-import androidx.core.content.ContextCompat
-import com.parthjadav.passwordmanager.utils.AppUtils
+import com.parthjadav.passwordmanager.utils.PreferenceManager
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -18,8 +15,14 @@ class SplashScreenActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             /* Create an Intent that will start the Menu-Activity. */
-            val mainIntent = Intent(this, WelcomeActivity::class.java)
-            startActivity(mainIntent)
+            if (PreferenceManager(this).getKeyValueBoolean("isPinSet")){
+                PreferenceManager(this).setKeyValueBoolean("isLock",true)
+                val mainIntent = Intent(this, SetPinActivity::class.java)
+                startActivity(mainIntent)
+            }else {
+                val mainIntent = Intent(this, WelcomeActivity::class.java)
+                startActivity(mainIntent)
+            }
         }, 3000)
     }
 }

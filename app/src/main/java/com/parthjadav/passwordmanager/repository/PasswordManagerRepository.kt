@@ -2,11 +2,7 @@ package com.parthjadav.passwordmanager.repository
 
 import android.content.Context
 import com.parthjadav.passwordmanager.db.PasswordManagerDatabase
-import androidx.room.Room
 import androidx.room.Room.databaseBuilder
-import com.parthjadav.passwordmanager.utils.AppUtils
-import android.R.attr.description
-import android.provider.ContactsContract.CommonDataKinds.Note
 import com.parthjadav.passwordmanager.model.User
 import android.os.AsyncTask
 

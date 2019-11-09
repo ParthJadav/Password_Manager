@@ -45,7 +45,7 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:text="Create a 4-digit Pincode"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_18ssp"
+            android:textSize="@dimen/_16ssp"
             app:textFontPath="fonts/Montserrat-Bold.ttf" />
 
         <com.parthjadav.passwordmanager.utils.CirclePinField

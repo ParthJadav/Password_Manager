@@ -1,5 +1,6 @@
 package com.parthjadav.passwordmanager.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.parthjadav.passwordmanager.R
@@ -12,5 +13,8 @@ class AddPasswordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_password)
 
         btnAddPassBack.setOnClickListener { finish() }
+        tvSelectAccount.setOnClickListener {
+            val mainIntent = Intent(this, SelectAccountActivity::class.java)
+            startActivity(mainIntent) }
     }
 }
