@@ -54,4 +54,8 @@
     <string name="we_couldn_t_find_any_search_results">We couldn\'t find any search results.</string>
     <string name="whoops_no_matches">Whoops, no matches</string>
     <string name="give_it_another_go">Give it another go</string>
+    <string name="title">Title</string>
+    <string name="email_id_username_mobile_number">Email-Id/Username/Mobile Number</string>
+    <string name="view_password">View Password</string>
+    <string name="hide_password">Hide Password</string>
 </resources>

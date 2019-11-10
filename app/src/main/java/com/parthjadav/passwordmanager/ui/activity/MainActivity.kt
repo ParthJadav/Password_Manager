@@ -4,21 +4,49 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.app.ActivityOptionsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.an.customfontview.CustomTextView
 import com.parthjadav.passwordmanager.R
+import com.parthjadav.passwordmanager.dao.PasswordDao
+import com.parthjadav.passwordmanager.db.AppDatabase
+import com.parthjadav.passwordmanager.model.Password
+import com.parthjadav.passwordmanager.ui.adapter.PasswordAdapter
 import com.parthjadav.passwordmanager.utils.PreferenceManager
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var db: AppDatabase? = null
+    private var passwordDao: PasswordDao? = null
+    lateinit var passwords: List<Password>
+    lateinit var layoutManager: LinearLayoutManager
+
+    private var isDetails: Boolean = false
+
+    @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         PreferenceManager(this).setKeyValueBoolean("isLock", false)
+        layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        recyclerViewPassword.layoutManager = layoutManager
+
+        getPasswords()
 
         imgBtnSettings.setOnClickListener {
             val mainIntent = Intent(this, SettingsActivity::class.java)
@@ -26,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnAddPassword.setOnClickListener {
+            isDetails = false
             val mainIntent = Intent(this, AddPasswordActivity::class.java)
             startActivity(mainIntent)
         }
@@ -72,6 +101,95 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
 
         }
+    }
+
+    private fun getPasswords() {
+
+        Observable.fromCallable {
+            db = AppDatabase.getAppDataBase(context = this)
+            passwordDao = db?.passwordDao()
+
+
+            with(passwordDao) {
+                passwords = this?.getAllPassword()!!
+            }
+        }.doOnNext { list ->
+            runOnUiThread {
+
+                if (passwords.size > 0) {
+                    val passwordAdapter = PasswordAdapter(
+                        passwords,
+                        passwords,
+                        object : PasswordAdapter.OnPasswordClickListener {
+                            override fun onClick(
+                                position: Int,
+                                imageView: AppCompatImageView,
+                                password: Password
+                            ) {
+                                isDetails = true
+                                val intent =
+                                    Intent(this@MainActivity, PasswordDetailsActivity::class.java)
+                                intent.putExtra("accountName", password.getAccountName().toString())
+                                intent.putExtra("id", password.getId().toString())
+                                intent.putExtra("accountImage", password.getAccountImage())
+                                intent.putExtra("title", password.getTitle().toString())
+                                intent.putExtra("userId", password.getUserId().toString())
+                                intent.putExtra("password", password.getPassword().toString())
+
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    val options: ActivityOptionsCompat =
+                                        ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                            this@MainActivity,
+                                            androidx.core.util.Pair<View, String>(
+                                                imageView,
+                                                "imageTransition"
+                                            )
+                                        )
+                                    startActivity(intent, options.toBundle())
+                                } else {
+                                    startActivity(intent)
+                                }
+                            }
+                        })
+
+                    recyclerViewPassword.adapter = passwordAdapter
+                    edtSearchPassword.addTextChangedListener(object : TextWatcher {
+                        override fun afterTextChanged(p0: Editable?) {
+                        }
+
+                        override fun beforeTextChanged(
+                            p0: CharSequence?,
+                            p1: Int,
+                            p2: Int,
+                            p3: Int
+                        ) {
+                        }
+
+                        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                            passwordAdapter.search(p0!!, layoutNoDataMain, recyclerViewPassword)
+                        }
+                    })
+
+                }
+            }
+
+        }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!isDetails) {
+            getPasswords()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.getItemId() == android.R.id.home) {
+            supportFinishAfterTransition()
+        }
+        return super.onOptionsItemSelected(item)
 
     }
 }

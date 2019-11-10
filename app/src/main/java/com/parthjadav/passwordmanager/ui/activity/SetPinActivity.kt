@@ -1,6 +1,7 @@
 package com.parthjadav.passwordmanager.ui.activity
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -30,8 +31,8 @@ class SetPinActivity : AppCompatActivity() {
         if (isPinSet) {
             if (PreferenceManager(this).getKeyValueBoolean("isLock")){
                 btnSetPinBack.visibility = View.INVISIBLE
-            }else{
-                btnSetPinBack.visibility = View.VISIBLE
+            }else if (PreferenceManager(this).getKeyValueBoolean("viewPassword")){
+                btnSetPinBack.visibility = View.INVISIBLE
             }
             tvTitleMessage.text = "Enter your 4-digit Pincode"
         }
@@ -129,6 +130,11 @@ class SetPinActivity : AppCompatActivity() {
                     if (PreferenceManager(this).getKeyValueBoolean("isLock")){
                         val mainIntent = Intent(this, MainActivity::class.java)
                         startActivity(mainIntent)
+                        finish()
+                    }else if (PreferenceManager(this).getKeyValueBoolean("viewPassword")){
+                        val mainIntent = Intent()
+                        mainIntent.putExtra("view", "1")
+                        setResult(Activity.RESULT_OK, mainIntent)
                         finish()
                     }else {
                         PreferenceManager(this).setKeyValueBoolean("isPinSet", false)

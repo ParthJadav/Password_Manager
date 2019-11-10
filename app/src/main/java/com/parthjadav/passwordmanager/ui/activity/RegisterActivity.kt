@@ -23,7 +23,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private var usernameExists: List<User>? = null
     private var mobileNo: String = ""
-    var lastId: Long? = 0
+    var lastId: Long? = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }.doOnNext { list ->
             runOnUiThread {
-                if (lastId!! > 0) {
+                if (lastId!! >= 0) {
                     PreferenceManager(this@RegisterActivity).setKeyValueBoolean("login",true)
                     PreferenceManager(this@RegisterActivity).registeredUserId =
                         lastId.toString()
