@@ -129,6 +129,7 @@ class SetPinActivity : AppCompatActivity() {
                     if (PreferenceManager(this).getKeyValueBoolean("isLock")){
                         val mainIntent = Intent(this, MainActivity::class.java)
                         startActivity(mainIntent)
+                        finish()
                     }else {
                         PreferenceManager(this).setKeyValueBoolean("isPinSet", false)
                         PreferenceManager(this).setKeyValueString("pincode", "")

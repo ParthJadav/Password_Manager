@@ -1,7 +1,11 @@
 package com.parthjadav.passwordmanager.ui.activity
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +13,7 @@ import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.model.Account
 import com.parthjadav.passwordmanager.ui.adapter.AccountAdapter
 import kotlinx.android.synthetic.main.activity_select_account.*
+
 
 class SelectAccountActivity : AppCompatActivity() {
 
@@ -41,7 +46,29 @@ class SelectAccountActivity : AppCompatActivity() {
         accounts.add(Account("Line", R.drawable.line))
         accounts.add(Account("WeChat", R.drawable.we_chat))
 
-        val accountAdapter = AccountAdapter(accounts)
+        val accountAdapter =
+            AccountAdapter(accounts, accounts, object : AccountAdapter.OnAccountClickListener {
+                override fun onClick(position: Int, accountName: String, accountImage: Int) {
+                    val intent = Intent()
+                    intent.putExtra("accountName", accountName)
+                    intent.putExtra("accountImage", accountImage)
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                }
+            })
         recyclerViewAccounts.adapter = accountAdapter
+
+        edtSearchAccount.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                accountAdapter.search(p0!!, layoutNoData, recyclerViewAccounts)
+            }
+        })
+
     }
 }

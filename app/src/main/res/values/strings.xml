@@ -47,4 +47,11 @@
     <string name="change_password">Change Password</string>
     <string name="select_account">Select Account</string>
     <string name="account_name">Account Name</string>
+    <string name="password">Password</string>
+    <string name="logout_message">Are you sure you want to logout?</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_account_found">No Account Found.</string>
+    <string name="we_couldn_t_find_any_search_results">We couldn\'t find any search results.</string>
+    <string name="whoops_no_matches">Whoops, no matches</string>
+    <string name="give_it_another_go">Give it another go</string>
 </resources>

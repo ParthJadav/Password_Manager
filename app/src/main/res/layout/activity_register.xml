@@ -43,10 +43,10 @@
             <com.an.customfontview.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_minus5sdp"
                 android:text="@string/create_account"
                 android:textColor="@color/colorAccent"
                 android:textSize="@dimen/_20ssp"
-                android:layout_marginTop="@dimen/_minus5sdp"
                 app:textFontPath="fonts/Montserrat-Medium.ttf" />
 
             <com.an.customfontview.CustomEditText
@@ -55,14 +55,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:background="@drawable/bg_edittext"
-                android:hint="@string/firstname"
-                android:imeOptions="actionNext"
                 android:drawableStart="@drawable/ic_user"
                 android:drawablePadding="@dimen/_10sdp"
-                android:singleLine="true"
-                android:inputType="textCapCharacters|textCapWords"
                 android:drawableTint="@color/grey_60"
+                android:hint="@string/firstname"
+                android:imeOptions="actionNext"
+                android:inputType="textCapCharacters|textCapWords"
                 android:padding="@dimen/_10sdp"
+                android:singleLine="true"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grey_60"
                 app:textFontPath="fonts/Montserrat-Regular.ttf" />
@@ -71,33 +71,16 @@
                 android:id="@+id/edtLastname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bg_edittext"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="@dimen/_10sdp"
+                android:drawableTint="@color/grey_60"
                 android:hint="@string/lastname"
-                android:drawableStart="@drawable/ic_user"
-                android:drawablePadding="@dimen/_10sdp"
-                android:drawableTint="@color/grey_60"
                 android:imeOptions="actionNext"
-                android:padding="@dimen/_10sdp"
                 android:inputType="textCapCharacters|textCapWords"
-                android:textColor="@color/colorBlack"
-                android:textColorHint="@color/grey_60"
-                app:textFontPath="fonts/Montserrat-Regular.ttf" />
-
-            <com.an.customfontview.CustomEditText
-                android:id="@+id/edtUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/bg_edittext"
-                android:hint="@string/username"
-                android:singleLine="true"
-                android:imeOptions="actionNext"
-                android:drawableStart="@drawable/ic_user"
-                android:drawablePadding="@dimen/_10sdp"
-                android:drawableTint="@color/grey_60"
                 android:padding="@dimen/_10sdp"
+                android:singleLine="true"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grey_60"
                 app:textFontPath="fonts/Montserrat-Regular.ttf" />
@@ -108,15 +91,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bg_edittext"
-                android:imeOptions="actionNext"
-                android:inputType="number"
                 android:digits="0123456789"
                 android:drawableStart="@drawable/ic_phone"
                 android:drawablePadding="@dimen/_10sdp"
                 android:drawableTint="@color/grey_60"
                 android:hint="@string/mobile_number"
-                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:inputType="number"
                 android:padding="@dimen/_10sdp"
+                android:singleLine="true"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grey_60"
                 app:textFontPath="fonts/Montserrat-Regular.ttf" />
@@ -127,17 +110,36 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bg_edittext"
-                android:hint="@string/dots"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:padding="@dimen/_10sdp"
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="@dimen/_10sdp"
                 android:drawableTint="@color/grey_60"
+                android:hint="@string/password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:padding="@dimen/_10sdp"
+                android:singleLine="true"
                 android:textColor="@color/colorBlack"
                 android:textColorHint="@color/grey_60"
                 app:textFontPath="fonts/Montserrat-Regular.ttf" />
+
+            <com.an.customfontview.CustomEditText
+                android:id="@+id/edtCnfPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/bg_edittext"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="@dimen/_10sdp"
+                android:drawableTint="@color/grey_60"
+                android:hint="@string/confirm_password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:padding="@dimen/_10sdp"
+                android:singleLine="true"
+                android:textColor="@color/colorBlack"
+                android:textColorHint="@color/grey_60"
+                app:textFontPath="fonts/Montserrat-Regular.ttf" />
+
 
             <ProgressBar
                 android:id="@+id/loginProgressBar"
@@ -155,9 +157,9 @@
                 android:background="@drawable/bg_login_btn"
                 android:text="@string/register"
                 android:textAllCaps="false"
-                app:btnFontPath="fonts/Montserrat-Regular.ttf"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_16ssp" />
+                android:textSize="@dimen/_16ssp"
+                app:btnFontPath="fonts/Montserrat-Regular.ttf" />
 
         </LinearLayout>
 

@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:scrollbars="none"
         android:overScrollMode="never"
-        android:paddingTop="@dimen/_140sdp" />
+        android:paddingTop="@dimen/_140sdp"
+        android:scrollbars="none" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_70sdp"
         android:layout_below="@id/layout_top"
@@ -56,6 +57,7 @@
         </LinearLayout>
 
         <com.an.customfontview.CustomEditText
+            android:id="@+id/edtSearchAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/layout_top"
@@ -73,6 +75,48 @@
             tools:ignore="RtlSymmetry"
             tools:targetApi="m" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutNoData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/view"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/noresult" />
+
+        <com.an.customfontview.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/whoops_no_matches"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_14ssp"
+            app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
+
+        <com.an.customfontview.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/we_couldn_t_find_any_search_results"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_12ssp"
+            app:textFontPath="fonts/Montserrat-Regular.ttf" />
+
+        <com.an.customfontview.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/give_it_another_go"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_12ssp"
+            app:textFontPath="fonts/Montserrat-Regular.ttf" />
     </LinearLayout>
 
 </RelativeLayout>

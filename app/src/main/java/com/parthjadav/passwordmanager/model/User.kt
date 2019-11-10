@@ -14,8 +14,8 @@ class User {
     private var firstName: String? = null
     @ColumnInfo(name = "lastname")
     private var lastName: String? = null
-    @ColumnInfo(name = "username")
-    private var username: String? = null
+    @ColumnInfo(name = "mobile_number")
+    private var mobileNumber: String? = null
     @ColumnInfo(name = "password")
     private var password: String? = null
 
@@ -43,12 +43,12 @@ class User {
         this.lastName = lastName
     }
 
-    fun getUsername(): String? {
-        return username
+    fun getMobileNumber(): String? {
+        return mobileNumber
     }
 
-    fun setUsername(username: String) {
-        this.username = username
+    fun setMobileNumber(mobileNumber: String) {
+        this.mobileNumber = mobileNumber
     }
 
     fun getPassword(): String? {

@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorWhite"
     android:gravity="center"
+    android:id="@+id/layoutAccount"
     android:orientation="horizontal"
     android:padding="@dimen/_10sdp">
 

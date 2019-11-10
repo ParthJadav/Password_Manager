@@ -42,25 +42,29 @@
                 app:textFontPath="fonts/Montserrat-Bold.ttf" />
 
             <com.an.customfontview.CustomEditText
-                android:id="@+id/edtUsername"
+                android:id="@+id/edtMobileNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:drawableStart="@drawable/ic_phone"
                 android:drawablePadding="@dimen/_10sdp"
+                android:singleLine="true"
                 android:drawableTint="@color/colorPrimary"
                 android:background="@drawable/bg_edittext"
                 android:hint="@string/mobile_number"
+                android:inputType="number"
+                android:digits="0123456789"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/colorPrimary"
                 app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
             <com.an.customfontview.CustomEditText
-                android:id="@+id/edtPassword"
+                android:id="@+id/edtLoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:imeOptions="actionDone"
                 android:background="@drawable/bg_edittext"
                 android:hint="@string/dots"
                 android:drawableStart="@drawable/ic_lock"

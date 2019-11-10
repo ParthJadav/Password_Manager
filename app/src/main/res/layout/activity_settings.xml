@@ -105,6 +105,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/menuLogout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="@dimen/_20sdp"
