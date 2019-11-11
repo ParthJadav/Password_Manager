@@ -15,6 +15,7 @@ import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.dao.PasswordDao
 import com.parthjadav.passwordmanager.db.AppDatabase
 import com.parthjadav.passwordmanager.model.Password
+import com.parthjadav.passwordmanager.utils.PreferenceManager
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -31,16 +32,47 @@ class AddPasswordActivity : AppCompatActivity() {
     private var db: AppDatabase? = null
     private var passwordDao: PasswordDao? = null
 
+    private var title: String = ""
+    private var userId: String = ""
+    private var pass: String = ""
+
+    private lateinit var preferenceManager: PreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_password)
+
+        preferenceManager = PreferenceManager(this)
 
         btnAddPassBack.setOnClickListener { finish() }
         tvSelectAccount.setOnClickListener {
             val intent = Intent(this, SelectAccountActivity::class.java)
             startActivityForResult(intent, ADD_TASK_REQUEST)
         }
-        btnAddPassword.setOnClickListener { savePassword() }
+        btnAddPassword.setOnClickListener {
+
+            title = accountName
+            userId = edtPasswordUserId.text.toString()
+            pass = edtPassPassword.text.toString()
+
+            if (userId.isEmpty()) {
+                edtPasswordUserId.error = "Please enter user id"
+                edtPasswordUserId.requestFocus()
+            } else if (pass.isEmpty()) {
+                edtPassPassword.error = "Please enter password"
+                edtPassPassword.requestFocus()
+            } else if (accountName.isEmpty()) {
+                val myToast =
+                    Toast.makeText(
+                        applicationContext,
+                        "Please select account.",
+                        Toast.LENGTH_SHORT
+                    )
+                myToast.show()
+            } else {
+                savePassword()
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -75,9 +107,7 @@ class AddPasswordActivity : AppCompatActivity() {
             passwordDao = db?.passwordDao()
 
             //val title = edtPasswordTitle.text.toString()
-            val title = accountName
-            val userId = edtPasswordUserId.text.toString()
-            val pass = edtPassPassword.text.toString()
+
 
             val password = Password()
             password.setAccountName(accountName)

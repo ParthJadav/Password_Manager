@@ -37,12 +37,16 @@ class MainActivity : AppCompatActivity() {
 
     private var isDetails: Boolean = false
 
+    private lateinit var preferenceManager: PreferenceManager
+
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        PreferenceManager(this).setKeyValueBoolean("isLock", false)
+        preferenceManager = PreferenceManager(this)
+
+        preferenceManager.setKeyValueBoolean("isLock", false)
         layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         recyclerViewPassword.layoutManager = layoutManager
 

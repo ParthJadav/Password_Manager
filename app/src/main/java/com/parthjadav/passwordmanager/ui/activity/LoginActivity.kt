@@ -24,10 +24,13 @@ class LoginActivity : AppCompatActivity() {
     private var password: String = ""
     private var userDetails: List<User>? = null
 
+    private lateinit var preferenceManager: PreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.parthjadav.passwordmanager.R.layout.activity_login)
 
+        preferenceManager = PreferenceManager(this)
 
         btnLogin.setOnClickListener {
             login()
@@ -61,8 +64,8 @@ class LoginActivity : AppCompatActivity() {
         }.doOnNext { list ->
             runOnUiThread {
                 if (userDetails?.size!! > 0) {
-                    PreferenceManager(this@LoginActivity).setKeyValueBoolean("login",true)
-                    PreferenceManager(this@LoginActivity).registeredUserId = userDetails?.get(0)?.getId().toString()
+                    preferenceManager.setKeyValueBoolean("login",true)
+                    preferenceManager.registeredUserId = userDetails?.get(0)?.getId().toString()
                     val myToast = Toast.makeText(
                         applicationContext,
                         "Successfully logged in",

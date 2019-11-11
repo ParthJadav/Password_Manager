@@ -58,4 +58,5 @@
     <string name="email_id_username_mobile_number">Email-Id/Username/Mobile Number</string>
     <string name="view_password">View Password</string>
     <string name="hide_password">Hide Password</string>
+    <string name="open_settings">Open Settings</string>
 </resources>

@@ -25,9 +25,13 @@ class RegisterActivity : AppCompatActivity() {
     private var mobileNo: String = ""
     var lastId: Long? = -1
 
+    private lateinit var preferenceManager: PreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        preferenceManager = PreferenceManager(this)
 
         btnRegister.setOnClickListener {
             isMobileNoExists()
@@ -69,9 +73,8 @@ class RegisterActivity : AppCompatActivity() {
         }.doOnNext { list ->
             runOnUiThread {
                 if (lastId!! >= 0) {
-                    PreferenceManager(this@RegisterActivity).setKeyValueBoolean("login",true)
-                    PreferenceManager(this@RegisterActivity).registeredUserId =
-                        lastId.toString()
+                    preferenceManager.setKeyValueBoolean("login",true)
+                    preferenceManager.registeredUserId = lastId.toString()
                     val myToast =
                         Toast.makeText(
                             applicationContext,

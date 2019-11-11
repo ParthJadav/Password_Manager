@@ -9,19 +9,23 @@ import com.parthjadav.passwordmanager.utils.PreferenceManager
 
 class SplashScreenActivity : AppCompatActivity() {
 
+    private lateinit var preferenceManager: PreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
+        preferenceManager = PreferenceManager(this)
+
         Handler().postDelayed({
             /* Create an Intent that will start the Menu-Activity. */
-            if (PreferenceManager(this@SplashScreenActivity).getKeyValueBoolean("isPinSet")) {
-                PreferenceManager(this@SplashScreenActivity).setKeyValueBoolean("isLock", true)
+            if (preferenceManager.getKeyValueBoolean("isPinSet")) {
+                preferenceManager.setKeyValueBoolean("isLock", true)
                 val mainIntent = Intent(this, SetPinActivity::class.java)
                 startActivity(mainIntent)
                 finish()
             } else {
-                if (PreferenceManager(this@SplashScreenActivity).getKeyValueBoolean("login")) {
+                if (preferenceManager.getKeyValueBoolean("login")) {
                     val mainIntent = Intent(this, MainActivity::class.java)
                     startActivity(mainIntent)
                     finish()

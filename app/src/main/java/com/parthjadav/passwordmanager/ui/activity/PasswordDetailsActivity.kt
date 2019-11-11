@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.utils.PreferenceManager
@@ -16,11 +17,16 @@ class PasswordDetailsActivity : AppCompatActivity() {
 
     private val ADD_TASK_REQUEST = 1
     var passView: String = ""
+
+    private lateinit var preferenceManager: PreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_password_details)
 
-        PreferenceManager(this).setKeyValueBoolean("viewPassword", false)
+        preferenceManager = PreferenceManager(this)
+
+        preferenceManager.setKeyValueBoolean("viewPassword", false)
 
         val id: String = intent.getStringExtra("id")!!
         val accountName: String = intent.getStringExtra("accountName")!!
@@ -47,15 +53,26 @@ class PasswordDetailsActivity : AppCompatActivity() {
         }
 
         btnViewPassword.setOnClickListener {
-            PreferenceManager(this).setKeyValueBoolean("viewPassword", true)
-            val intent = Intent(this, SetPinActivity::class.java)
-            startActivityForResult(intent, ADD_TASK_REQUEST)
+            if (!preferenceManager.getKeyValueBoolean("isPinSet")) {
+                tvPinNotSet.visibility = View.VISIBLE
+            } else {
+                tvPinNotSet.visibility = View.GONE
+                preferenceManager.setKeyValueBoolean("viewPassword", true)
+                val intent = Intent(this, SetPinActivity::class.java)
+                startActivityForResult(intent, ADD_TASK_REQUEST)
+            }
         }
 
         btnHidePassword.setOnClickListener {
-            tvPassPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            tvPassPassword.inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             btnViewPassword.visibility = View.VISIBLE
             btnHidePassword.visibility = View.GONE
+        }
+
+        tvOpenSettings.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -68,6 +85,7 @@ class PasswordDetailsActivity : AppCompatActivity() {
                 passView = data?.getStringExtra("view").toString()
 
                 if (passView.equals("1")) {
+                    preferenceManager.setKeyValueBoolean("viewPassword", false)
                     btnViewPassword.visibility = View.GONE
                     btnHidePassword.visibility = View.VISIBLE
                     tvPassPassword.inputType = InputType.TYPE_CLASS_TEXT
@@ -75,6 +93,13 @@ class PasswordDetailsActivity : AppCompatActivity() {
             }
         } else {
             Log.e("**** No Data", "0")
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (preferenceManager.getKeyValueBoolean("isPinSet")) {
+            tvPinNotSet.visibility = View.GONE
         }
     }
 }

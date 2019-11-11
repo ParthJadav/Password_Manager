@@ -21,17 +21,21 @@ class SetPinActivity : AppCompatActivity() {
     var isCreate: Boolean? = false
     var isPinSet: Boolean = false
 
+    private lateinit var preferenceManager: PreferenceManager
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_pin)
 
-        isPinSet = PreferenceManager(this).getKeyValueBoolean("isPinSet")
+        preferenceManager = PreferenceManager(this)
+
+        isPinSet =preferenceManager.getKeyValueBoolean("isPinSet")
 
         if (isPinSet) {
-            if (PreferenceManager(this).getKeyValueBoolean("isLock")){
+            if (preferenceManager.getKeyValueBoolean("isLock")){
                 btnSetPinBack.visibility = View.INVISIBLE
-            }else if (PreferenceManager(this).getKeyValueBoolean("viewPassword")){
+            }else if (preferenceManager.getKeyValueBoolean("viewPassword")){
                 btnSetPinBack.visibility = View.INVISIBLE
             }
             tvTitleMessage.text = "Enter your 4-digit Pincode"
@@ -124,21 +128,21 @@ class SetPinActivity : AppCompatActivity() {
         btnSavePin.setOnClickListener {
 
             if (isPinSet) {
-                val savedPin = PreferenceManager(this).getKeyValueString("pincode")
+                val savedPin = preferenceManager.getKeyValueString("pincode")
 
                 if (savedPin.equals(circleField.text.toString())) {
-                    if (PreferenceManager(this).getKeyValueBoolean("isLock")){
+                    if (preferenceManager.getKeyValueBoolean("isLock")){
                         val mainIntent = Intent(this, MainActivity::class.java)
                         startActivity(mainIntent)
                         finish()
-                    }else if (PreferenceManager(this).getKeyValueBoolean("viewPassword")){
+                    }else if (preferenceManager.getKeyValueBoolean("viewPassword")){
                         val mainIntent = Intent()
                         mainIntent.putExtra("view", "1")
                         setResult(Activity.RESULT_OK, mainIntent)
                         finish()
                     }else {
-                        PreferenceManager(this).setKeyValueBoolean("isPinSet", false)
-                        PreferenceManager(this).setKeyValueString("pincode", "")
+                        preferenceManager.setKeyValueBoolean("isPinSet", false)
+                        preferenceManager.setKeyValueString("pincode", "")
 
                         Toast.makeText(this, "Pincode removed successfully.", Toast.LENGTH_SHORT)
                             .show()
@@ -156,8 +160,8 @@ class SetPinActivity : AppCompatActivity() {
             } else {
                 if (pin.equals(confirmPin)) {
                     tvErrorMessage.visibility = View.GONE
-                    PreferenceManager(this).setKeyValueBoolean("isPinSet", true)
-                    PreferenceManager(this).setKeyValueString("pincode", pin)
+                    preferenceManager.setKeyValueBoolean("isPinSet", true)
+                    preferenceManager.setKeyValueString("pincode", pin)
 
                     Toast.makeText(this, "Pincode set successfully.", Toast.LENGTH_SHORT).show()
 

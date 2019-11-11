@@ -11,21 +11,23 @@ import androidx.appcompat.app.AppCompatActivity
 import com.an.customfontview.CustomTextView
 import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.utils.PreferenceManager
-import com.parthjadav.passwordmanager.utils.PreferenceManager.preferenceManager
 import kotlinx.android.synthetic.main.activity_settings.*
-import kotlinx.android.synthetic.main.dialog_logout.*
-import kotlinx.android.synthetic.main.dialog_logout.view.*
 
 
 class SettingsActivity : AppCompatActivity() {
 
     var isPinsSet: Boolean = false
 
+    private lateinit var preferenceManager: PreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.parthjadav.passwordmanager.R.layout.activity_settings)
+        setContentView(R.layout.activity_settings)
 
-        isPinsSet = PreferenceManager(this).getKeyValueBoolean("isPinSet")
+        preferenceManager = PreferenceManager(this)
+
+        isPinsSet = preferenceManager.getKeyValueBoolean("isPinSet")
+        preferenceManager.setKeyValueBoolean("viewPassword", false)
 
         switchPassCode.isChecked = isPinsSet
 
@@ -55,7 +57,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        isPinsSet = PreferenceManager(this).getKeyValueBoolean("isPinSet")
+        isPinsSet = preferenceManager.getKeyValueBoolean("isPinSet")
         switchPassCode.isChecked = isPinsSet
     }
 
@@ -84,7 +86,7 @@ class SettingsActivity : AppCompatActivity() {
 
             btnLogout.setOnClickListener {
                 dialog.dismiss()
-                PreferenceManager(this@SettingsActivity).clearPreferences()
+                preferenceManager.clearPreferences()
                 val mainIntent = Intent(this, WelcomeActivity::class.java)
                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(mainIntent)
