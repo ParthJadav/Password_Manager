@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <LinearLayout
             android:id="@+id/top_layout"
             android:layout_width="match_parent"
@@ -103,6 +102,34 @@
                 android:textSize="@dimen/_14ssp"
                 app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/menuBackup"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgBackup"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_backup"
+                android:tint="@color/colorPrimary" />
+
+            <com.an.customfontview.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_toRightOf="@id/imgBackup"
+                android:text="Backup"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_14ssp"
+                app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:id="@+id/menuLogout"

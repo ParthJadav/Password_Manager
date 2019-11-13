@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.app.ActivityOptionsCompat
@@ -32,9 +33,9 @@ class MainActivity : AppCompatActivity() {
 
     private var db: AppDatabase? = null
     private var passwordDao: PasswordDao? = null
-    lateinit var passwords: List<Password>
+    lateinit var passwords: MutableList<Password>
     lateinit var layoutManager: LinearLayoutManager
-
+    private var deletePassStatus: Int = 0
     private var isDetails: Boolean = false
 
     private lateinit var preferenceManager: PreferenceManager
@@ -45,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         preferenceManager = PreferenceManager(this)
+
+        passwords = ArrayList()
 
         preferenceManager.setKeyValueBoolean("isLock", false)
         layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
@@ -62,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             val mainIntent = Intent(this, AddPasswordActivity::class.java)
             startActivity(mainIntent)
         }
+
     }
 
     override fun onBackPressed() {
@@ -107,6 +111,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun getPasswords() {
 
         Observable.fromCallable {
@@ -115,16 +120,36 @@ class MainActivity : AppCompatActivity() {
 
 
             with(passwordDao) {
+
+                if (passwords.size > 0) {
+                    passwords.clear()
+                }
+
                 passwords = this?.getAllPassword()!!
             }
         }.doOnNext { list ->
             runOnUiThread {
 
                 if (passwords.size > 0) {
+
+                    recyclerViewPassword.visibility = View.VISIBLE
+                    layoutNoDataMain.visibility = View.GONE
+
                     val passwordAdapter = PasswordAdapter(
                         passwords,
                         passwords,
                         object : PasswordAdapter.OnPasswordClickListener {
+                            override fun onDelete(position: Int, password: Password) {
+                                /* val myToast =
+                                     Toast.makeText(
+                                         applicationContext,
+                                         "Delete click at - $position",
+                                         Toast.LENGTH_SHORT
+                                     )
+                                 myToast.show()*/
+                                deletePassword(password.getId().toString())
+                            }
+
                             override fun onClick(
                                 position: Int,
                                 imageView: AppCompatImageView,
@@ -170,10 +195,19 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                            passwordAdapter.search(p0!!, layoutNoDataMain, recyclerViewPassword)
+                            passwordAdapter.search(
+                                p0!!,
+                                layoutNoDataMain,
+                                recyclerViewPassword,
+                                tvError1,
+                                tvError2,
+                                tvError3
+                            )
                         }
                     })
-
+                } else {
+                    recyclerViewPassword.visibility = View.GONE
+                    layoutNoDataMain.visibility = View.VISIBLE
                 }
             }
 
@@ -194,6 +228,42 @@ class MainActivity : AppCompatActivity() {
             supportFinishAfterTransition()
         }
         return super.onOptionsItemSelected(item)
+    }
 
+    private fun deletePassword(passwordId: String) {
+
+        Observable.fromCallable {
+            db = AppDatabase.getAppDataBase(context = this)
+            passwordDao = db?.passwordDao()
+
+            with(passwordDao) {
+                deletePassStatus = this?.deletePassword(passwordId)!!
+            }
+        }.doOnNext { list ->
+            runOnUiThread {
+
+                if (deletePassStatus > 0) {
+                    val myToast =
+                        Toast.makeText(
+                            applicationContext,
+                            "Password Deleted",
+                            Toast.LENGTH_SHORT
+                        )
+                    myToast.show()
+
+                    getPasswords();
+                } else {
+                    val myToast =
+                        Toast.makeText(
+                            applicationContext,
+                            "Something went wrong, Please try again.",
+                            Toast.LENGTH_SHORT
+                        )
+                    myToast.show()
+                }
+            }
+        }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
     }
 }

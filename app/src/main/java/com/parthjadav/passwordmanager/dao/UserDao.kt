@@ -1,6 +1,5 @@
 package com.parthjadav.passwordmanager.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.parthjadav.passwordmanager.model.User
 
@@ -17,7 +16,10 @@ interface UserDao {
     fun isMobileNumberExists(mobileNumber: String): List<User>
 
     @Query("SELECT * FROM user WHERE mobile_number=:mobileNumber AND password=:password")
-    fun login(mobileNumber: String,password: String): List<User>
+    fun login(mobileNumber: String, password: String): List<User>
+
+    @Query("UPDATE user SET password=:newPassword WHERE id=:userId")
+    fun changePassword(newPassword: String, userId: String)
 
     @Update
     fun updateUser(user: User)

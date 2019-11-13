@@ -43,7 +43,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:text="Create a 4-digit Pincode"
+            android:text="Create a 6-digit Pincode"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/_16ssp"
             app:textFontPath="fonts/Montserrat-Bold.ttf" />
@@ -59,12 +59,12 @@
             android:clickable="false"
             android:inputType="text"
             android:textSelectHandle="@drawable/text_handle"
-            android:textSize="@dimen/_16ssp"
-            app:circleRadius="@dimen/_13sdp"
+            android:textSize="@dimen/_12ssp"
+            app:circleRadius="@dimen/_10sdp"
             app:fieldBgColor="#fff"
             app:fillerColor="@color/colorPrimary"
             app:fillerRadius="@dimen/_10sdp"
-            app:noOfFields="4" />
+            app:noOfFields="6" />
 
         <com.an.customfontview.CustomTextView
             android:id="@+id/tvErrorMessage"

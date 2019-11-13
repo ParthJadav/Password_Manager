@@ -74,4 +74,11 @@
         <attr name="fillerColor" format="color" />
         <attr name="fillerRadius" format="dimension"/>
     </declare-styleable>
+
+    <declare-styleable name="SwipeRevealLayout">
+        <attr name="dragFromEdge">
+            <flag name="left" value="1" />
+            <flag name="right" value="2" />
+        </attr>
+    </declare-styleable>
 </resources>

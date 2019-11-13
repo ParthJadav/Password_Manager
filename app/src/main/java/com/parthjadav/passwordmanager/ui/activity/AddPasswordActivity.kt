@@ -51,11 +51,14 @@ class AddPasswordActivity : AppCompatActivity() {
         }
         btnAddPassword.setOnClickListener {
 
-            title = accountName
+            title = edtPasswordTitle.text.toString()
             userId = edtPasswordUserId.text.toString()
             pass = edtPassPassword.text.toString()
 
-            if (userId.isEmpty()) {
+            if (title.isEmpty()) {
+                edtPasswordTitle.error = "Please enter title"
+                edtPasswordTitle.requestFocus()
+            } else if (userId.isEmpty()) {
                 edtPasswordUserId.error = "Please enter user id"
                 edtPasswordUserId.requestFocus()
             } else if (pass.isEmpty()) {

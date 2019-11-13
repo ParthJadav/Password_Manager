@@ -62,17 +62,18 @@
         android:layout_below="@id/edtSearchPassword"
         android:layout_marginTop="@dimen/_15sdp"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/_60sdp"
         android:overScrollMode="never"
-        android:scrollbars="none" />
+        android:paddingBottom="@dimen/_60sdp"
+        android:scrollbars="none"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/layoutNoDataMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/edtSearchPassword"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="@dimen/_150sdp"
@@ -82,6 +83,7 @@
             android:src="@drawable/noresult" />
 
         <com.an.customfontview.CustomTextView
+            android:id="@+id/tvError1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -91,6 +93,7 @@
             app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
 
         <com.an.customfontview.CustomTextView
+            android:id="@+id/tvError2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -100,6 +103,7 @@
             app:textFontPath="fonts/Montserrat-Regular.ttf" />
 
         <com.an.customfontview.CustomTextView
+            android:id="@+id/tvError3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

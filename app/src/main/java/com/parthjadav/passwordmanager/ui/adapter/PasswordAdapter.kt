@@ -5,18 +5,20 @@ import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.model.Password
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class PasswordAdapter(
-    private val passwordList: List<Password>,
-    private var passwordListSearch: List<Password>,
-    private val onPasswordClickListener: OnPasswordClickListener
+    val passwordList: MutableList<Password>,
+    var passwordListSearch: MutableList<Password>,
+    val onPasswordClickListener: OnPasswordClickListener
 ) :
     RecyclerView.Adapter<PasswordAdapter.ViewHolder>() {
 
@@ -42,6 +44,18 @@ class PasswordAdapter(
                 position, holder.imgPassList, passwordListSearch[position]
             )
         }
+
+        holder.linLayDeletePass.setOnClickListener {
+            onPasswordClickListener.onDelete(position, passwordListSearch[position])
+        }
+    }
+
+    fun removeAt(position: Int) {
+        passwordListSearch.removeAt(position)
+        passwordList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemChanged(position)
+        notifyDataSetChanged()
     }
 
     //this method is giving the size of the list
@@ -54,16 +68,25 @@ class PasswordAdapter(
         internal val tvPassListTitle: TextView = itemView.findViewById(R.id.tvPassListTitle)
         internal val tvPassListUserId: TextView = itemView.findViewById(R.id.tvPassListUserId)
         internal val imgPassList: AppCompatImageView = itemView.findViewById(R.id.imgPassList)
-        internal var layoutPassList: LinearLayout = itemView.findViewById(R.id.layoutPassList)
+        internal var layoutPassList: FrameLayout = itemView.findViewById(R.id.layoutPassList)
+        internal var linLayDeletePass: LinearLayout = itemView.findViewById(R.id.linLayDeletePass)
 
     }
 
     interface OnPasswordClickListener {
         fun onClick(position: Int, imageView: AppCompatImageView, password: Password)
+        fun onDelete(position: Int, password: Password)
     }
 
-    @SuppressLint("DefaultLocale")
-    fun search(charSequence: CharSequence, l: LinearLayout, r: RecyclerView) {
+    @SuppressLint("DefaultLocale", "SetTextI18n")
+    fun search(
+        charSequence: CharSequence,
+        l: LinearLayout,
+        r: RecyclerView,
+        tvError1: TextView,
+        tvError2: TextView,
+        tvError3: TextView
+    ) {
         try {
             val charString = charSequence.toString()
             if (charString.isEmpty() || charString == null) {

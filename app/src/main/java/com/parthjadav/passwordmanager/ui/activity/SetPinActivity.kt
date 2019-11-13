@@ -179,12 +179,12 @@ class SetPinActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun confirmText() {
         if(!isPinSet) {
-            if (circleField.text?.length == 4) {
+            if (circleField.text?.length == 6) {
                 if (isCreate == false) {
                     isCreate = true
                     pin = circleField.text.toString()
                     Handler().postDelayed({
-                        tvTitleMessage.text = "Confirm your 4-digit Pincode"
+                        tvTitleMessage.text = "Confirm your 6-digit Pincode"
                         circleField.setText("")
                     }, 100)
                 } else {

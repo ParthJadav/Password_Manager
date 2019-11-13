@@ -15,12 +15,15 @@ interface PasswordDao {
     fun getPasswordDetails(passwordId: String): List<Password>
 
     @Query("SELECT * FROM password")
-    fun getAllPassword(): List<Password>
+    fun getAllPassword(): MutableList<Password>
 
     @Update
     fun updatePassword(password: Password)
 
     @Delete
     fun deletePassword(password: Password)
+
+    @Query("DELETE FROM password WHERE id=:passwordId")
+    fun deletePassword(passwordId: String):Int
 
 }

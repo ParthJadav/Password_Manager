@@ -66,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
                 if (userDetails?.size!! > 0) {
                     preferenceManager.setKeyValueBoolean("login",true)
                     preferenceManager.registeredUserId = userDetails?.get(0)?.getId().toString()
+                    preferenceManager.setKeyValueString("old_password",userDetails?.get(0)?.getPassword().toString())
                     val myToast = Toast.makeText(
                         applicationContext,
                         "Successfully logged in",
