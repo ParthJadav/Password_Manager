@@ -188,7 +188,6 @@ class SettingsActivity : AppCompatActivity() {
         } catch (e: Exception) {
 
         }
-
     }
 
 }

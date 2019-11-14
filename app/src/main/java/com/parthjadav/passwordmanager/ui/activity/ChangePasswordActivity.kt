@@ -1,11 +1,17 @@
 package com.parthjadav.passwordmanager.ui.activity
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.an.customfontview.CustomTextView
 import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.dao.UserDao
 import com.parthjadav.passwordmanager.db.AppDatabase
@@ -118,19 +124,62 @@ class ChangePasswordActivity : AppCompatActivity() {
             }
         }.doOnNext { list ->
             runOnUiThread {
-                val myToast =
+                /*val myToast =
                     Toast.makeText(
                         applicationContext,
                         "Password change",
                         Toast.LENGTH_SHORT
                     )
-                myToast.show()
+                myToast.show()*/
                 Handler().postDelayed({
-                    finish()
+                    showLogout(this)
                 }, 300)
             }
         }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun showLogout(mContext: Context) {
+        try {
+            val inflater =
+                mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val alertLayout = inflater.inflate(R.layout.dialog_logout, null)
+
+            val alert = AlertDialog.Builder(mContext)
+            alert.setView(alertLayout)
+            alert.setCancelable(false)
+
+            val title = alertLayout.findViewById<CustomTextView>(R.id.tvTitle)
+            val message = alertLayout.findViewById<CustomTextView>(R.id.tvMessage)
+            val btnLogout = alertLayout.findViewById<CustomTextView>(R.id.tvPositive)
+            val btnCancel = alertLayout.findViewById<CustomTextView>(R.id.tvNegative)
+
+            title.text = "Password Changed"
+            message.text = "Please logout and login again?"
+
+            val dialog: AlertDialog
+            dialog = alert.create()
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            btnLogout.setOnClickListener {
+                dialog.dismiss()
+                preferenceManager.clearPreferences()
+                val mainIntent = Intent(this, WelcomeActivity::class.java)
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(mainIntent)
+                finish()
+            }
+            btnCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
+
+        } catch (e: Exception) {
+
+        }
+
     }
 }
