@@ -1,6 +1,9 @@
 package com.parthjadav.passwordmanager.ui.activity
 
 import android.os.Bundle
+import android.os.Handler
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.parthjadav.passwordmanager.R
@@ -10,6 +13,7 @@ import com.parthjadav.passwordmanager.utils.PreferenceManager
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_add_password.*
 import kotlinx.android.synthetic.main.activity_change_password.*
 
 class ChangePasswordActivity : AppCompatActivity() {
@@ -21,6 +25,10 @@ class ChangePasswordActivity : AppCompatActivity() {
 
     private var db: AppDatabase? = null
     private var userDao: UserDao? = null
+
+    var pwdOld :Int = 0
+    var pwdNew :Int = 0
+    var pwdConfirm :Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +64,47 @@ class ChangePasswordActivity : AppCompatActivity() {
                 changePassword(newPassword)
             }
         }
+
+        tvOldPasswordVisibility.setOnClickListener {
+            if (pwdOld == 0) {
+                pwdOld = 1;
+                tvOldPasswordVisibility.text = "Hide"
+                edtOldPassword.transformationMethod = HideReturnsTransformationMethod.getInstance();
+                edtOldPassword.setSelection(edtOldPassword.getText().length);
+            } else if (pwdOld == 1) {
+                pwdOld = 0;
+                tvOldPasswordVisibility.text = "Show"
+                edtOldPassword.transformationMethod = PasswordTransformationMethod.getInstance();
+                edtOldPassword.setSelection(edtOldPassword.getText().length);
+            }
+        }
+
+        tvNewPasswordVisibility.setOnClickListener {
+            if (pwdNew == 0) {
+                pwdNew = 1;
+                tvNewPasswordVisibility.text = "Hide"
+                edtNewPassword.transformationMethod = HideReturnsTransformationMethod.getInstance();
+                edtNewPassword.setSelection(edtNewPassword.getText().length);
+            } else if (pwdNew == 1) {
+                pwdNew = 0;
+                tvNewPasswordVisibility.text = "Show"
+                edtNewPassword.transformationMethod = PasswordTransformationMethod.getInstance();
+                edtNewPassword.setSelection(edtNewPassword.getText().length);
+            }
+        }
+        tvCNFPasswordVisibility.setOnClickListener {
+            if (pwdConfirm == 0) {
+                pwdConfirm = 1;
+                tvCNFPasswordVisibility.text = "Hide"
+                edtConfirmPassword.transformationMethod = HideReturnsTransformationMethod.getInstance();
+                edtConfirmPassword.setSelection(edtConfirmPassword.getText().length);
+            } else if (pwdConfirm == 1) {
+                pwdConfirm = 0;
+                tvCNFPasswordVisibility.text = "Show"
+                edtConfirmPassword.transformationMethod = PasswordTransformationMethod.getInstance();
+                edtConfirmPassword.setSelection(edtConfirmPassword.getText().length);
+            }
+        }
     }
 
     private fun changePassword(password: String) {
@@ -76,6 +125,9 @@ class ChangePasswordActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     )
                 myToast.show()
+                Handler().postDelayed({
+                    finish()
+                }, 300)
             }
         }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

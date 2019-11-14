@@ -63,7 +63,7 @@
             app:circleRadius="@dimen/_10sdp"
             app:fieldBgColor="#fff"
             app:fillerColor="@color/colorPrimary"
-            app:fillerRadius="@dimen/_10sdp"
+            app:fillerRadius="@dimen/_8sdp"
             app:noOfFields="6" />
 
         <com.an.customfontview.CustomTextView

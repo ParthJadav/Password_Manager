@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.parthjadav.passwordmanager.R
+import com.parthjadav.passwordmanager.ui.fragment.CheckPasswordFragment
 import com.parthjadav.passwordmanager.utils.PreferenceManager
 import kotlinx.android.synthetic.main.activity_password_details.*
 
@@ -53,14 +54,41 @@ class PasswordDetailsActivity : AppCompatActivity() {
         }
 
         btnViewPassword.setOnClickListener {
-            if (!preferenceManager.getKeyValueBoolean("isPinSet")) {
+            /*if (!preferenceManager.getKeyValueBoolean("isPinSet")) {
                 tvPinNotSet.visibility = View.VISIBLE
             } else {
                 tvPinNotSet.visibility = View.GONE
                 preferenceManager.setKeyValueBoolean("viewPassword", true)
                 val intent = Intent(this, SetPinActivity::class.java)
                 startActivityForResult(intent, ADD_TASK_REQUEST)
-            }
+            }*/
+
+            val checkPasswordFragment = CheckPasswordFragment()
+            checkPasswordFragment.CheckPasswordFragment(true,object :CheckPasswordFragment.OnPasswordCheck{
+                override fun onCancel(isCancel: Boolean) {
+                    checkPasswordFragment.dismiss()
+                }
+
+                override fun onClick(isPasswordTrue: Boolean) {
+                    if (isPasswordTrue){
+                        btnViewPassword.visibility = View.GONE
+                        btnHidePassword.visibility = View.VISIBLE
+                        tvPassPassword.inputType = InputType.TYPE_CLASS_TEXT
+                        checkPasswordFragment.dismiss()
+                    }else{
+                        val myToast =
+                            Toast.makeText(
+                                applicationContext,
+                                "Invalid Password",
+                                Toast.LENGTH_SHORT
+                            )
+                        myToast.show()
+                    }
+                }
+
+            })
+            checkPasswordFragment.isCancelable = false
+            checkPasswordFragment.showNow(supportFragmentManager,"Check Password")
         }
 
         btnHidePassword.setOnClickListener {

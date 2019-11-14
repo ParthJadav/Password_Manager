@@ -1,11 +1,14 @@
 package com.parthjadav.passwordmanager.ui.activity
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.os.Handler
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -23,6 +26,8 @@ import kotlinx.android.synthetic.main.activity_add_password.*
 import java.io.ByteArrayOutputStream
 
 
+
+
 class AddPasswordActivity : AppCompatActivity() {
 
     private val ADD_TASK_REQUEST = 1
@@ -36,8 +41,11 @@ class AddPasswordActivity : AppCompatActivity() {
     private var userId: String = ""
     private var pass: String = ""
 
+    var pwd :Int = 0
+
     private lateinit var preferenceManager: PreferenceManager
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_password)
@@ -74,6 +82,20 @@ class AddPasswordActivity : AppCompatActivity() {
                 myToast.show()
             } else {
                 savePassword()
+            }
+        }
+
+        tvPasswordVisibility.setOnClickListener {
+            if (pwd == 0) {
+                pwd = 1;
+                tvPasswordVisibility.text = "Hide"
+                edtPassPassword.transformationMethod = HideReturnsTransformationMethod.getInstance();
+                edtPassPassword.setSelection(edtPassPassword.getText().length);
+            } else if (pwd == 1) {
+                pwd = 0;
+                tvPasswordVisibility.text = "Show"
+                edtPassPassword.transformationMethod = PasswordTransformationMethod.getInstance();
+                edtPassPassword.setSelection(edtPassPassword.getText().length);
             }
         }
     }

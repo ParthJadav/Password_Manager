@@ -1,29 +1,24 @@
 package com.parthjadav.passwordmanager.ui.activity
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.an.customfontview.CustomTextView
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.MultiplePermissionsReport
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.db.AppDatabase
+import com.parthjadav.passwordmanager.ui.fragment.CheckPasswordFragment
 import com.parthjadav.passwordmanager.utils.PreferenceManager
 import kotlinx.android.synthetic.main.activity_settings.*
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
-import android.widget.Toast
-import android.util.Log
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -46,13 +41,61 @@ class SettingsActivity : AppCompatActivity() {
         switchPassCode.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 if (!isPinsSet) {
-                    val mainIntent = Intent(this, SetPinActivity::class.java)
-                    startActivity(mainIntent)
+                    val checkPasswordFragment = CheckPasswordFragment()
+                    checkPasswordFragment.isCancelable = false
+                    checkPasswordFragment.CheckPasswordFragment(true,
+                        object : CheckPasswordFragment.OnPasswordCheck {
+                            override fun onCancel(isCancel: Boolean) {
+                                checkPasswordFragment.dismiss()
+                                switchPassCode.isChecked = true
+                            }
+
+                            override fun onClick(isPasswordTrue: Boolean) {
+                                if (isPasswordTrue) {
+                                    checkPasswordFragment.dismiss()
+                                    val mainIntent = Intent(this@SettingsActivity, SetPinActivity::class.java)
+                                    startActivity(mainIntent)
+                                } else {
+                                    val myToast =
+                                        Toast.makeText(
+                                            applicationContext,
+                                            "Invalid Password",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                    myToast.show()
+                                }
+                            }
+                        })
+                    checkPasswordFragment.showNow(supportFragmentManager, "Check Password")
                 }
             } else {
                 if (isPinsSet) {
-                    val mainIntent = Intent(this, SetPinActivity::class.java)
-                    startActivity(mainIntent)
+                    val checkPasswordFragment = CheckPasswordFragment()
+                    checkPasswordFragment.isCancelable = false
+                    checkPasswordFragment.CheckPasswordFragment(true,
+                        object : CheckPasswordFragment.OnPasswordCheck {
+                            override fun onCancel(isCancel: Boolean) {
+                                checkPasswordFragment.dismiss()
+                                switchPassCode.isChecked = true
+                            }
+
+                            override fun onClick(isPasswordTrue: Boolean) {
+                                if (isPasswordTrue) {
+                                    checkPasswordFragment.dismiss()
+                                    val mainIntent = Intent(this@SettingsActivity, SetPinActivity::class.java)
+                                    startActivity(mainIntent)
+                                } else {
+                                    val myToast =
+                                        Toast.makeText(
+                                            applicationContext,
+                                            "Invalid Password",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                    myToast.show()
+                                }
+                            }
+                        })
+                    checkPasswordFragment.showNow(supportFragmentManager, "Check Password")
                 }
             }
         }
@@ -67,24 +110,6 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         menuBackup.setOnClickListener {
-            /*Dexter.withActivity(this)
-                .withPermissions(
-                    Manifest.permission.READ_CONTACTS,
-                    Manifest.permission.RECORD_AUDIO
-                ).withListener(object : MultiplePermissionsListener {
-                    override fun onPermissionsChecked(report: MultiplePermissionsReport) {
-                        if (report.areAllPermissionsGranted()) {
-
-                        }
-                    }
-
-                    override fun onPermissionRationaleShouldBeShown(
-                        permissions: List<PermissionRequest>,
-                        token: PermissionToken
-                    ) {
-                        token.continuePermissionRequest()
-                    }
-                }).check()*/
             db = AppDatabase.getAppDataBase(this@SettingsActivity)
             db?.close()
             backup()
@@ -97,7 +122,8 @@ class SettingsActivity : AppCompatActivity() {
             val data = Environment.getDataDirectory()
             if (sd.canWrite()) {
                 //val currentDbPath = "//data//com.parthjadav.passwordmanager//databases//password_manager"
-                val currentDbPath = "//data//com.parthjadav.passwordmanager//databases//password_manager"
+                val currentDbPath =
+                    "//data//com.parthjadav.passwordmanager//databases//password_manager"
                 val backupPath = "manager_backup.db"
                 val currentDb = File(data, currentDbPath)
                 val backupDb = File(sd, backupPath)

@@ -38,7 +38,7 @@ class SetPinActivity : AppCompatActivity() {
             }else if (preferenceManager.getKeyValueBoolean("viewPassword")){
                 btnSetPinBack.visibility = View.INVISIBLE
             }
-            tvTitleMessage.text = "Enter your 4-digit Pincode"
+            tvTitleMessage.text = "Enter your 6-digit Pincode"
         }
 
         btnSetPinBack.setOnClickListener {

@@ -59,4 +59,6 @@
     <string name="view_password">View Password</string>
     <string name="hide_password">Hide Password</string>
     <string name="open_settings">Open Settings</string>
+    <string name="submit">Submit</string>
+    <string name="show">Show</string>
 </resources>
