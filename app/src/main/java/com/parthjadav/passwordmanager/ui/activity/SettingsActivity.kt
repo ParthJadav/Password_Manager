@@ -47,7 +47,7 @@ class SettingsActivity : AppCompatActivity() {
                         object : CheckPasswordFragment.OnPasswordCheck {
                             override fun onCancel(isCancel: Boolean) {
                                 checkPasswordFragment.dismiss()
-                                switchPassCode.isChecked = true
+                                switchPassCode.isChecked = false
                             }
 
                             override fun onClick(isPasswordTrue: Boolean) {

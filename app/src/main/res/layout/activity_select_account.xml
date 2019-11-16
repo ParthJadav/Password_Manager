@@ -28,6 +28,8 @@
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:background="@drawable/bg_select_account"
         android:orientation="vertical">
 

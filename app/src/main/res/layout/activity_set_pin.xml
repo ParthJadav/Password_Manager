@@ -55,7 +55,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
             android:clickable="false"
             android:inputType="text"
             android:textSelectHandle="@drawable/text_handle"
@@ -89,22 +89,24 @@
         android:layout_height="0dp"
         android:layout_alignParentBottom="true"
         android:layout_weight="1"
+        android:paddingTop="@dimen/_7sdp"
+        android:paddingBottom="@dimen/_7sdp"
         android:background="@drawable/bg_add_password"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv1"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
                 android:gravity="center"
@@ -115,8 +117,8 @@
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv2"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
@@ -128,8 +130,8 @@
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv3"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
                 android:gravity="center"
@@ -141,17 +143,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv4"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
                 android:gravity="center"
@@ -162,8 +164,8 @@
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv5"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
@@ -175,8 +177,8 @@
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv6"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
                 android:gravity="center"
@@ -188,17 +190,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv7"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
                 android:gravity="center"
@@ -209,8 +211,8 @@
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv8"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
@@ -222,8 +224,8 @@
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv9"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
                 android:gravity="center"
@@ -235,18 +237,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btnSavePin"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:gravity="center"
                 android:padding="@dimen/_5sdp"
@@ -256,8 +257,8 @@
 
             <com.an.customfontview.CustomTextView
                 android:id="@+id/tv0"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:background="@drawable/bg_round"
@@ -269,8 +270,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btnNumberBack"
-                android:layout_width="@dimen/_52sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:padding="@dimen/_12sdp"
                 android:src="@drawable/ic_backspace"
