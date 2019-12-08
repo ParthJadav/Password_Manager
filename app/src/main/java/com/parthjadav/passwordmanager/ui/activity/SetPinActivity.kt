@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.utils.PreferenceManager
+import com.parthjadav.passwordmanager.utils.Tools
 import kotlinx.android.synthetic.main.activity_set_pin.*
 
 
@@ -143,9 +144,7 @@ class SetPinActivity : AppCompatActivity() {
                     }else {
                         preferenceManager.setKeyValueBoolean("isPinSet", false)
                         preferenceManager.setKeyValueString("pincode", "")
-
-                        Toast.makeText(this, "Pincode removed successfully.", Toast.LENGTH_SHORT)
-                            .show()
+                        Tools.makeToast(this,"PinCode removed successfully.",R.drawable.splash_one,Toast.LENGTH_SHORT)
 
                         Handler().postDelayed({
                             finish()
@@ -163,7 +162,7 @@ class SetPinActivity : AppCompatActivity() {
                     preferenceManager.setKeyValueBoolean("isPinSet", true)
                     preferenceManager.setKeyValueString("pincode", pin)
 
-                    Toast.makeText(this, "Pincode set successfully.", Toast.LENGTH_SHORT).show()
+                    Tools.makeToast(this,"PinCode set successfully.",R.drawable.splash_one,Toast.LENGTH_SHORT)
 
                     Handler().postDelayed({
                         finish()

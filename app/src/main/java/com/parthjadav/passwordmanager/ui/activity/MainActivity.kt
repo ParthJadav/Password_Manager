@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var layoutManager: LinearLayoutManager
     private var deletePassStatus: Int = 0
     private var isDetails: Boolean = false
+    private var isBack: Boolean = false
 
     private lateinit var preferenceManager: PreferenceManager
 
@@ -220,8 +221,28 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         if (!isDetails) {
             getPasswords()
+            /*if(isBack) {
+                if(preferenceManager.getKeyValueBoolean("isPinSet")) {
+                    val intent = Intent(this@MainActivity, SetPinActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    finish()
+                }
+            }*/
         }
     }
+
+   /*override fun onPause() {
+        super.onPause()
+        preferenceManager.setKeyValueBoolean("isLock", false)
+        isBack = false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        preferenceManager.setKeyValueBoolean("isLock", true)
+        isBack = true
+    }*/
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.getItemId() == android.R.id.home) {

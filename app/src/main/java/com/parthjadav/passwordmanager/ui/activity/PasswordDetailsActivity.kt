@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import com.parthjadav.passwordmanager.biometric.BiometricManager
 import com.parthjadav.passwordmanager.ui.fragment.CheckPasswordFragment
+import com.parthjadav.passwordmanager.utils.Tools
 
 
 class PasswordDetailsActivity : AppCompatActivity(), BiometricCallback {
@@ -181,13 +182,7 @@ class PasswordDetailsActivity : AppCompatActivity(), BiometricCallback {
                     tvPassPassword.inputType = InputType.TYPE_CLASS_TEXT
                     checkPasswordFragment.dismiss()
                 }else{
-                    val myToast =
-                        Toast.makeText(
-                            applicationContext,
-                            "Invalid Password",
-                            Toast.LENGTH_SHORT
-                        )
-                    myToast.show()
+                    Tools.makeToast(this@PasswordDetailsActivity,"Invalid Password", R.drawable.ic_info_outline,Toast.LENGTH_SHORT)
                 }
             }
 

@@ -18,12 +18,15 @@ import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.ColorInt;
@@ -444,6 +447,22 @@ public class Tools {
             str = str.substring(0, str.length() - 1);
         }
         return str;
+    }
+
+    public static void makeToast(Activity context, String message, int icon,int length) {
+        LayoutInflater inflater = context.getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, null);
+
+        ImageView image = (ImageView) layout.findViewById(R.id.image);
+        image.setImageResource(icon);
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText(message);
+
+        Toast toast = new Toast(context);
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(length);
+        toast.setView(layout);
+        toast.show();
     }
 
     public static String getFileNameFromURL(String url) {

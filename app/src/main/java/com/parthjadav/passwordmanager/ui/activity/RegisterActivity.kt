@@ -10,6 +10,7 @@ import com.parthjadav.passwordmanager.dao.UserDao
 import com.parthjadav.passwordmanager.db.AppDatabase
 import com.parthjadav.passwordmanager.model.User
 import com.parthjadav.passwordmanager.utils.PreferenceManager
+import com.parthjadav.passwordmanager.utils.Tools
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -75,13 +76,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (lastId!! >= 0) {
                     preferenceManager.setKeyValueBoolean("login",true)
                     preferenceManager.registeredUserId = lastId.toString()
-                    val myToast =
-                        Toast.makeText(
-                            applicationContext,
-                            "Account Created.",
-                            Toast.LENGTH_SHORT
-                        )
-                    myToast.show()
+                    Tools.makeToast(this,"Account Created.",R.drawable.ic_person_outline,Toast.LENGTH_SHORT)
 
                     Handler().postDelayed({
                         val mainIntent = Intent(this, MainActivity::class.java)
@@ -90,13 +85,7 @@ class RegisterActivity : AppCompatActivity() {
                         finish()
                     }, 300);
                 } else {
-                    val myToast =
-                        Toast.makeText(
-                            applicationContext,
-                            "Something went wrong!!",
-                            Toast.LENGTH_SHORT
-                        )
-                    myToast.show()
+                    Tools.makeToast(this,"Something went wrong!!",R.drawable.ic_info_outline,Toast.LENGTH_SHORT)
                 }
             }
             //isUserNameExists()

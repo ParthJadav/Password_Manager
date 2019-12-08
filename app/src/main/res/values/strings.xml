@@ -70,4 +70,12 @@
     <string name="biometric_failure">Failed to view password!!</string>
     <string name="biometric_cancelled">Authentication cancelled by user</string>
     <string name="biometric_success">Login Successful</string>
+    <string name="generate_password">Generate Password</string>
+    <string name="lowercase_letters">Lowercase letters</string>
+    <string name="uppercase_letters">Uppercase letters</string>
+    <string name="digits">Digits</string>
+    <string name="special_characters">Special Characters</string>
+    <string name="click_here_to_copy">Click here to copy</string>
+    <string name="generated_password">Generated Password</string>
+    <string name="copy_password">Copy Password</string>
 </resources>

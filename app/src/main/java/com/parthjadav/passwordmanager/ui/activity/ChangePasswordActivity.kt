@@ -16,6 +16,7 @@ import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.dao.UserDao
 import com.parthjadav.passwordmanager.db.AppDatabase
 import com.parthjadav.passwordmanager.utils.PreferenceManager
+import com.parthjadav.passwordmanager.utils.Tools
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -124,13 +125,7 @@ class ChangePasswordActivity : AppCompatActivity() {
             }
         }.doOnNext { list ->
             runOnUiThread {
-                /*val myToast =
-                    Toast.makeText(
-                        applicationContext,
-                        "Password change",
-                        Toast.LENGTH_SHORT
-                    )
-                myToast.show()*/
+                Tools.makeToast(this,"Password successfully changed.",R.drawable.splash_one,Toast.LENGTH_SHORT)
                 Handler().postDelayed({
                     showLogout(this)
                 }, 300)

@@ -1,5 +1,6 @@
 package com.parthjadav.passwordmanager.ui.activity
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
@@ -11,10 +12,12 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.an.customfontview.CustomTextView
+import com.github.florent37.runtimepermission.kotlin.askPermission
 import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.db.AppDatabase
 import com.parthjadav.passwordmanager.ui.fragment.CheckPasswordFragment
 import com.parthjadav.passwordmanager.utils.PreferenceManager
+import com.parthjadav.passwordmanager.utils.Tools
 import kotlinx.android.synthetic.main.activity_settings.*
 import java.io.File
 import java.io.FileInputStream
@@ -53,7 +56,8 @@ class SettingsActivity : AppCompatActivity() {
                             override fun onClick(isPasswordTrue: Boolean) {
                                 if (isPasswordTrue) {
                                     checkPasswordFragment.dismiss()
-                                    val mainIntent = Intent(this@SettingsActivity, SetPinActivity::class.java)
+                                    val mainIntent =
+                                        Intent(this@SettingsActivity, SetPinActivity::class.java)
                                     startActivity(mainIntent)
                                 } else {
                                     val myToast =
@@ -82,16 +86,11 @@ class SettingsActivity : AppCompatActivity() {
                             override fun onClick(isPasswordTrue: Boolean) {
                                 if (isPasswordTrue) {
                                     checkPasswordFragment.dismiss()
-                                    val mainIntent = Intent(this@SettingsActivity, SetPinActivity::class.java)
+                                    val mainIntent =
+                                        Intent(this@SettingsActivity, SetPinActivity::class.java)
                                     startActivity(mainIntent)
                                 } else {
-                                    val myToast =
-                                        Toast.makeText(
-                                            applicationContext,
-                                            "Invalid Password",
-                                            Toast.LENGTH_SHORT
-                                        )
-                                    myToast.show()
+                                    Tools.makeToast(this@SettingsActivity,"Invalid Password", R.drawable.splash_one,Toast.LENGTH_SHORT)
                                 }
                             }
                         })
@@ -109,10 +108,47 @@ class SettingsActivity : AppCompatActivity() {
             showLogout(this)
         }
 
+        menuGeneratePassword.setOnClickListener {
+            val mainIntent = Intent(this, GeneratePasswordActivity::class.java)
+            startActivity(mainIntent)
+        }
+
         menuBackup.setOnClickListener {
-            db = AppDatabase.getAppDataBase(this@SettingsActivity)
-            db?.close()
-            backup()
+
+            askPermission(Manifest.permission.READ_CONTACTS, Manifest.permission.ACCESS_FINE_LOCATION){
+                //all permissions already granted or just granted
+                db = AppDatabase.getAppDataBase(this@SettingsActivity)
+                db?.close()
+                backup()
+            }.onDeclined { e ->
+                if (e.hasDenied()) {
+                    //appendText(resultView, "Denied :")
+                    e.denied.forEach {
+                        //appendText(resultView, it)
+                    }
+
+                    AlertDialog.Builder(this@SettingsActivity)
+                        .setMessage("Please accept our permissions")
+                        .setPositiveButton("yes") { dialog, which ->
+                            e.askAgain();
+                        } //ask again
+                        .setNegativeButton("no") { dialog, which ->
+                            dialog.dismiss();
+                        }
+                        .show();
+                }
+
+                if(e.hasForeverDenied()) {
+                    //appendText(resultView, "ForeverDenied :")
+                    //the list of forever denied permissions, user has check 'never ask again'
+                    e.foreverDenied.forEach {
+                        //appendText(resultView, it)
+                    }
+                    // you need to open setting manually if you really need it
+                    e.goToSettings();
+                }
+            }
+
         }
     }
 
@@ -132,8 +168,7 @@ class SettingsActivity : AppCompatActivity() {
                 dst.transferFrom(src, 0, src.size())
                 src.close()
                 dst.close()
-                Toast.makeText(this@SettingsActivity, "Backup successfully", Toast.LENGTH_LONG)
-                    .show()
+                Tools.makeToast(this@SettingsActivity,"Backup successfully", R.drawable.ic_info_outline,Toast.LENGTH_SHORT)
             }
 
         } catch (e: Exception) {

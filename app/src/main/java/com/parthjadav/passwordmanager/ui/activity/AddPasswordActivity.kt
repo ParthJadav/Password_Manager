@@ -19,6 +19,7 @@ import com.parthjadav.passwordmanager.dao.PasswordDao
 import com.parthjadav.passwordmanager.db.AppDatabase
 import com.parthjadav.passwordmanager.model.Password
 import com.parthjadav.passwordmanager.utils.PreferenceManager
+import com.parthjadav.passwordmanager.utils.Tools
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -73,13 +74,7 @@ class AddPasswordActivity : AppCompatActivity() {
                 edtPassPassword.error = "Please enter password"
                 edtPassPassword.requestFocus()
             } else if (accountName.isEmpty()) {
-                val myToast =
-                    Toast.makeText(
-                        applicationContext,
-                        "Please select account.",
-                        Toast.LENGTH_SHORT
-                    )
-                myToast.show()
+                Tools.makeToast(this,"Please select account.",R.drawable.ic_info_outline,Toast.LENGTH_SHORT)
             } else {
                 savePassword()
             }
@@ -147,24 +142,12 @@ class AddPasswordActivity : AppCompatActivity() {
         }.doOnNext { list ->
             runOnUiThread {
                 if (lastId!! >= 0) {
-                    val myToast =
-                        Toast.makeText(
-                            applicationContext,
-                            "Password added",
-                            Toast.LENGTH_SHORT
-                        )
-                    myToast.show()
+                    Tools.makeToast(this,"Password added.",R.drawable.splash_one,Toast.LENGTH_SHORT)
                     Handler().postDelayed({
                         finish()
                     }, 300)
                 } else {
-                    val myToast =
-                        Toast.makeText(
-                            applicationContext,
-                            "Failed to add password!!",
-                            Toast.LENGTH_SHORT
-                        )
-                    myToast.show()
+                    Tools.makeToast(this,"Failed to add password.",R.drawable.splash_one,Toast.LENGTH_SHORT)
                 }
             }
         }.subscribeOn(Schedulers.io())

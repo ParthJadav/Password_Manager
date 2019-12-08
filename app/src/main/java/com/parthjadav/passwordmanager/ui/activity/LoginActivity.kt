@@ -6,10 +6,12 @@ import android.os.Handler
 import android.view.Gravity
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.parthjadav.passwordmanager.R
 import com.parthjadav.passwordmanager.dao.UserDao
 import com.parthjadav.passwordmanager.db.AppDatabase
 import com.parthjadav.passwordmanager.model.User
 import com.parthjadav.passwordmanager.utils.PreferenceManager
+import com.parthjadav.passwordmanager.utils.Tools
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -67,12 +69,7 @@ class LoginActivity : AppCompatActivity() {
                     preferenceManager.setKeyValueBoolean("login",true)
                     preferenceManager.registeredUserId = userDetails?.get(0)?.getId().toString()
                     preferenceManager.setKeyValueString("old_password",userDetails?.get(0)?.getPassword().toString())
-                    val myToast = Toast.makeText(
-                        applicationContext,
-                        "Successfully logged in",
-                        Toast.LENGTH_SHORT
-                    )
-                    myToast.show()
+                    Tools.makeToast(this,"Successfully logged in.", R.drawable.ic_tick,Toast.LENGTH_SHORT)
                     Handler().postDelayed({
                         val mainIntent = Intent(this, MainActivity::class.java)
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -80,12 +77,7 @@ class LoginActivity : AppCompatActivity() {
                         finish()
                     }, 300);
                 } else {
-                    val myToast = Toast.makeText(
-                        applicationContext,
-                        "Invalid mobile number or password",
-                        Toast.LENGTH_SHORT
-                    )
-                    myToast.show()
+                    Tools.makeToast(this,"Invalid mobile number or password", R.drawable.ic_close,Toast.LENGTH_SHORT)
                 }
             }
 
