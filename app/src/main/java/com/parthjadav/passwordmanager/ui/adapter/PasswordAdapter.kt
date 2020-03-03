@@ -40,13 +40,16 @@ class PasswordAdapter(
         holder.imgPassList.setImageBitmap(bitmap)
 
         holder.layoutPassList.setOnClickListener {
-            onPasswordClickListener.onClick(
-                position, holder.imgPassList, passwordListSearch[position]
+            onPasswordClickListener.onClick(position, holder.imgPassList, passwordListSearch[position]
             )
         }
 
         holder.linLayDeletePass.setOnClickListener {
             onPasswordClickListener.onDelete(position, passwordListSearch[position])
+        }
+
+        holder.linLayEditPass.setOnClickListener {
+            onPasswordClickListener.onEdit(position, holder.imgPassList, passwordListSearch[position])
         }
     }
 
@@ -70,11 +73,13 @@ class PasswordAdapter(
         internal val imgPassList: AppCompatImageView = itemView.findViewById(R.id.imgPassList)
         internal var layoutPassList: FrameLayout = itemView.findViewById(R.id.layoutPassList)
         internal var linLayDeletePass: LinearLayout = itemView.findViewById(R.id.linLayDeletePass)
+        internal var linLayEditPass: LinearLayout = itemView.findViewById(R.id.linLayEditPass)
 
     }
 
     interface OnPasswordClickListener {
         fun onClick(position: Int, imageView: AppCompatImageView, password: Password)
+        fun onEdit(position: Int, imageView: AppCompatImageView, password: Password)
         fun onDelete(position: Int, password: Password)
     }
 

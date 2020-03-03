@@ -25,6 +25,9 @@
         <activity android:name=".ui.activity.GeneratePasswordActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
+            android:name=".ui.activity.UpdatePasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.activity.PasswordDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -56,7 +59,7 @@
             android:theme="@style/AppTheme.NoActionBar.StatusBar" />
         <activity
             android:name=".ui.activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar.StatusBar" />
         <activity
             android:name=".ui.activity.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">

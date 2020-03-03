@@ -14,7 +14,7 @@ interface PasswordDao {
     @Query("SELECT * FROM password WHERE id=:passwordId")
     fun getPasswordDetails(passwordId: String): List<Password>
 
-    @Query("SELECT * FROM password")
+    @Query("SELECT * FROM password ORDER BY id DESC")
     fun getAllPassword(): MutableList<Password>
 
     @Update

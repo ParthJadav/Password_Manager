@@ -116,7 +116,7 @@ class AddPasswordActivity : AppCompatActivity() {
         val drawable = ContextCompat.getDrawable(this@AddPasswordActivity, image)
         val bitmap = (drawable as BitmapDrawable).bitmap
         val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, stream)
         return stream.toByteArray()
     }
 
