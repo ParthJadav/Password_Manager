@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     private var isDetails: Boolean = false
     private var isEdit: Boolean = false
     private var isBack: Boolean = false
+    private var isPasswordChange: Boolean = false
 
     private lateinit var preferenceManager: PreferenceManager
 
@@ -50,6 +51,12 @@ class MainActivity : AppCompatActivity() {
         preferenceManager = PreferenceManager(this)
 
         passwords = ArrayList()
+
+        swipePasswordList.setOnRefreshListener {
+            swipePasswordList.isRefreshing = true
+            passwords.clear()
+            getPasswords()
+        }
 
         preferenceManager.setKeyValueBoolean("isLock", false)
         layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
@@ -133,7 +140,7 @@ class MainActivity : AppCompatActivity() {
             runOnUiThread {
 
                 if (passwords.size > 0) {
-
+                    swipePasswordList.isRefreshing = false
                     recyclerViewPassword.visibility = View.VISIBLE
                     layoutNoDataMain.visibility = View.GONE
 
@@ -243,7 +250,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        isPasswordChange = preferenceManager.getKeyValueBoolean("isPasswordChange")
         if (!isDetails || !isEdit) {
+            getPasswords()
+        }
+
+        if (isPasswordChange){
+            preferenceManager.setKeyValueBoolean("isPasswordChange",false)
             getPasswords()
         }
     }

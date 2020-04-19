@@ -17,6 +17,9 @@ interface PasswordDao {
     @Query("SELECT * FROM password ORDER BY id DESC")
     fun getAllPassword(): MutableList<Password>
 
+    @Query("UPDATE password SET password=:newPassword WHERE id=:id")
+    fun changePassword(newPassword: String, id: String)
+
     @Update
     fun updatePassword(password: Password)
 

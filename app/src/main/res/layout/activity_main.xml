@@ -7,140 +7,154 @@
     android:background="@color/colorWhite"
     tools:context=".ui.activity.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewPassword"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipePasswordList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:paddingTop="@dimen/_140sdp"
-        android:paddingBottom="@dimen/_60sdp"
-        android:scrollbars="none"
-        android:visibility="gone" />
-
-    <LinearLayout
-        android:id="@+id/layoutNoDataMain"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linLayTop"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/_minus20sdp"
-        android:visibility="visible">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_150sdp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:src="@drawable/noresult" />
-
-        <com.an.customfontview.CustomTextView
-            android:id="@+id/tvError1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/whoops_no_matches"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_14ssp"
-            app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
-
-        <com.an.customfontview.CustomTextView
-            android:id="@+id/tvError2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/we_couldn_t_find_any_search_results"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_12ssp"
-            app:textFontPath="fonts/Montserrat-Regular.ttf" />
-
-        <com.an.customfontview.CustomTextView
-            android:id="@+id/tvError3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/give_it_another_go"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_12ssp"
-            app:textFontPath="fonts/Montserrat-Regular.ttf" />
-    </LinearLayout>
-
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_70sdp"
-        android:layout_below="@id/linLayTop"
-        android:layout_marginTop="@dimen/_minus45sdp"
-        android:background="@drawable/bg_gradient_soft_top" />
-
-    <RelativeLayout
-        android:id="@+id/linLayTop"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_120sdp"
-        android:background="@drawable/bg_select_account"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/layout_top"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:layout_height="match_parent">
 
-            <com.an.customfontview.CustomTextView
-                android:id="@+id/tvWelcome"
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingTop="@dimen/_140sdp"
+                android:paddingBottom="@dimen/_60sdp"
+                android:scrollbars="none"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layoutNoDataMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linLayTop"
+                android:layout_marginTop="@dimen/_minus20sdp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:src="@drawable/noresult" />
+
+                <com.an.customfontview.CustomTextView
+                    android:id="@+id/tvError1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/whoops_no_matches"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/_14ssp"
+                    app:textFontPath="fonts/Montserrat-SemiBold.ttf" />
+
+                <com.an.customfontview.CustomTextView
+                    android:id="@+id/tvError2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/we_couldn_t_find_any_search_results"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/_12ssp"
+                    app:textFontPath="fonts/Montserrat-Regular.ttf" />
+
+                <com.an.customfontview.CustomTextView
+                    android:id="@+id/tvError3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/give_it_another_go"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/_12ssp"
+                    app:textFontPath="fonts/Montserrat-Regular.ttf" />
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_70sdp"
+                android:layout_below="@id/linLayTop"
+                android:layout_marginTop="@dimen/_minus45sdp"
+                android:background="@drawable/bg_gradient_soft_top" />
+
+            <RelativeLayout
+                android:id="@+id/linLayTop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:background="@drawable/bg_select_account"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/layout_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+                    <com.an.customfontview.CustomTextView
+                        android:id="@+id/tvWelcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/vault"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_26ssp"
+                        app:textFontPath="fonts/Montserrat-SemiBold.ttf"
+                        tools:ignore="RelativeOverlap" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgBtnSettings"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_settings" />
+                </RelativeLayout>
+
+                <com.an.customfontview.CustomEditText
+                    android:id="@+id/edtSearchPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout_top"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:background="@drawable/bg_edittext_light"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="@color/grey_40"
+                    android:hint="@string/search"
+                    android:imeOptions="actionDone"
+                    android:paddingStart="@dimen/_8sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:singleLine="true"
+                    tools:ignore="RtlSymmetry"
+                    tools:targetApi="m" />
+            </RelativeLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnAddPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/vault"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/_26ssp"
-                app:textFontPath="fonts/Montserrat-SemiBold.ttf"
-                tools:ignore="RelativeOverlap" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgBtnSettings"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_settings" />
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/_15sdp"
+                android:backgroundTint="@color/colorPrimary"
+                android:src="@drawable/ic_add_white_24dp"
+                app:borderWidth="0dp"
+                app:fabSize="normal" />
         </RelativeLayout>
-
-        <com.an.customfontview.CustomEditText
-            android:id="@+id/edtSearchPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/layout_top"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:background="@drawable/bg_edittext_light"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="@dimen/_10sdp"
-            android:drawableTint="@color/grey_40"
-            android:hint="@string/search"
-            android:paddingStart="@dimen/_8sdp"
-            android:paddingTop="@dimen/_5sdp"
-            android:paddingBottom="@dimen/_5sdp"
-            tools:ignore="RtlSymmetry"
-            tools:targetApi="m" />
-    </RelativeLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnAddPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_15sdp"
-        android:backgroundTint="@color/colorPrimary"
-        android:src="@drawable/ic_add_white_24dp"
-        app:borderWidth="0dp"
-        app:fabSize="normal" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>
